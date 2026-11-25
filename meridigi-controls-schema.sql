@@ -22,10 +22,10 @@ insert into public.meridigi_site_settings(id) values(1) on conflict(id) do nothi
 insert into public.meridigi_update_links(label,url,is_enabled,sort_order)
 values('WhatsApp Channel','https://whatsapp.com/channel/0029VbEtDJMIHphLba3Ibx1tne',true,1) on conflict(url) do nothing;
 insert into public.meridigi_services(category,name,description,details,regular_price,button_text,whatsapp_number,sort_order)
-select 'BUILD','QUICK','A practical starter digital setup.','E-commerce setup; Online showroom in social media; WhatsApp Business catalogue; Telegram Channel; YouTube Channel',299,'WhatsApp for QUICK','917894531187',1
+select 'BUILD','QUICK','A practical starter digital setup.','E-commerce setup; Online showroom in social media; WhatsApp Business catalogue; Telegram Channel; YouTube Channel',399,'WhatsApp for QUICK','917894531187',1
 where not exists(select 1 from public.meridigi_services where category='BUILD' and name='QUICK');
 insert into public.meridigi_services(category,name,description,details,regular_price,button_text,whatsapp_number,sort_order)
-select 'BUILD','PROFESSIONAL','Includes all QUICK services.','Professional Reels – 10; Social media posts – 20; Total 30 content pieces in 90 days',599,'WhatsApp for PROFESSIONAL','917894531187',2
+select 'BUILD','PROFESSIONAL','Includes all QUICK services.','Professional Reels – 10; Social media posts – 20; Total 30 content pieces in 90 days',799,'WhatsApp for PROFESSIONAL','917894531187',2
 where not exists(select 1 from public.meridigi_services where category='BUILD' and name='PROFESSIONAL');
 insert into public.meridigi_services(category,name,description,details,regular_price,button_text,whatsapp_number,sort_order)
 select 'SEEKHO','Starter learning option','Learn practical digital skills step by step.','Free workshop; Free checklist; Starter learning option; Full batch and advanced learning details on request',399,'WhatsApp for SEEKHO','917894531187',1
@@ -55,3 +55,19 @@ drop policy if exists "MeriDigi admin manage site settings" on public.meridigi_s
 create policy "MeriDigi admin manage site settings" on public.meridigi_site_settings for all to authenticated using(public.is_meridigi_admin()) with check(public.is_meridigi_admin());
 grant select on public.meridigi_update_links,public.meridigi_services,public.meridigi_site_settings to anon,authenticated;
 grant insert,update,delete on public.meridigi_update_links,public.meridigi_services,public.meridigi_site_settings to authenticated;
+
+-- Apply the approved MeriDigi launch discounts on both first setup and reruns.
+update public.meridigi_services
+set regular_price=399, discounted_price=299, discount_label='SPECIAL DISCOUNT',
+    feature_in_newsletter=true, offer_start=null, offer_end=null
+where category='BUILD' and name='QUICK';
+
+update public.meridigi_services
+set regular_price=799, discounted_price=499, discount_label='SPECIAL DISCOUNT',
+    feature_in_newsletter=true, offer_start=null, offer_end=null
+where category='BUILD' and name='PROFESSIONAL';
+
+update public.meridigi_services
+set regular_price=399, discounted_price=299, discount_label='SPECIAL DISCOUNT',
+    feature_in_newsletter=true, offer_start=null, offer_end=null
+where category='SEEKHO' and name='Starter learning option';
