@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "id": "PLY-001",
+    "name": "Wigwam Excel - 19 — Lifetime Guarantee",
+    "category": "Plywood",
+    "size": "8×4",
+    "unit": "Nos",
+    "stock": 60,
+    "rate": 4622
+  },
+  {
+    "id": "PLY-002",
+    "name": "Wigwam Excel - 12 — Lifetime Guarantee",
+    "category": "Plywood",
+    "size": "8×4",
+    "unit": "Nos",
+    "stock": 20,
+    "rate": 3175
+  },
+  {
+    "id": "PLY-003",
+    "name": "Fabricate Gold - 19 BB — 25 Year Guarantee",
+    "category": "Plywood",
+    "size": "8×4",
+    "unit": "Nos",
+    "stock": 30,
+    "rate": 3604
+  },
+  {
+    "id": "PLY-004",
+    "name": "Fabricate Prime - 19 — 25 Year Guarantee",
+    "category": "Plywood",
+    "size": "8×4",
+    "unit": "Nos",
+    "stock": 40,
+    "rate": 4114
+  },
+  {
+    "id": "PLY-005",
+    "name": "Fabricate Prime - 12 — 25 Year Guarantee",
+    "category": "Plywood",
+    "size": "8×4",
+    "unit": "Nos",
+    "stock": 20,
+    "rate": 2874
+  },
+  {
+    "id": "PLY-006",
+    "name": "Fabricate Prime - 6 — 25 Year Guarantee",
+    "category": "Plywood",
+    "size": "8×4",
+    "unit": "Nos",
+    "stock": 9,
+    "rate": 1583
+  },
+  {
+    "id": "PLY-007",
+    "name": "MDP - 18 — 10 Year Guarantee",
+    "category": "Plywood",
+    "size": "8×4",
+    "unit": "Nos",
+    "stock": 90,
+    "rate": 3499
+  },
+  {
+    "id": "PLY-008",
+    "name": "MDP - 12 — 10 Year Guarantee",
+    "category": "Plywood",
+    "size": "8×4",
+    "unit": "Nos",
+    "stock": 20,
+    "rate": 2408
+  }
+]
