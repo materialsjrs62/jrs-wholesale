@@ -16,14 +16,14 @@ create table if not exists public.profiles (
 create or replace function public.handle_new_auth_user()
 returns trigger language plpgsql security definer
 set search_path = public
-as $
+as $function$
 begin
   insert into public.profiles (id,email,role)
   values (new.id,new.email,'staff')
   on conflict (id) do update set email=excluded.email;
   return new;
 end;
-$;
+$function$;
 
 drop trigger if exists on_auth_user_created_jrs on auth.users;
 create trigger on_auth_user_created_jrs
