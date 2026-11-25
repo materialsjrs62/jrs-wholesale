@@ -18,9 +18,9 @@ The workbook title says JRS BUILDING MATERIALS — PLYWOOD FIRST FINAL LIST. The
 ## Admin dashboard
 Open `admin.html` after configuring Supabase:
 - Email/password sign-in
-- Product create/edit and activate/deactivate
+- Product create/edit, activate/deactivate and safe delete (only where stock is zero and no ledger rows reference it)
 - Stock IN and OUT movements
-- Append-only movement history
+- Append-only movement history (ledger-linked products are deactivated rather than deleted)
 - Inventory and movement Excel exports, plus inventory CSV
 - Stock valuation report by category
 
@@ -35,8 +35,9 @@ Stock OUT that would make stock negative is rejected. Movement rows have no upda
 4. In SQL Editor, promote that exact account:
    `update public.profiles set role = 'admin' where email = 'YOUR_LOGIN_EMAIL';`
 5. Copy the Project URL and anon/publishable key into `supabase-config.js`.
-6. Never use or publish the Supabase service_role/secret key in browser code.
-7. Test login at `/admin.html`, product edits, stock IN, stock OUT, history, and Excel exports.
+6. Open `admin.html`, sign in with the owner account and verify the eight opening stock balances.
+7. Test a small Stock IN and Stock OUT transaction, confirm the ledger and current stock, then test both Excel exports.
+8. Never use or publish the Supabase service_role/secret key in browser code.
 
 The SQL script seeds the eight imported plywood products and their opening stock. The opening movement insert is idempotent using a source key. Run the SQL script once on a new project; if rerun, it will not duplicate the opening movement rows.
 
