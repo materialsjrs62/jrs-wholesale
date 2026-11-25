@@ -71,3 +71,26 @@ update public.meridigi_services
 set regular_price=399, discounted_price=299, discount_label='SPECIAL DISCOUNT',
     feature_in_newsletter=true, offer_start=null, offer_end=null
 where category='SEEKHO' and name='Starter learning option';
+
+
+-- Permanent Reference Links are independent of daily newsletter editions.
+create table if not exists public.meridigi_reference_links (
+ id uuid primary key default gen_random_uuid(),
+ label text not null,
+ url text not null,
+ description text,
+ is_enabled boolean not null default true,
+ sort_order integer not null default 0,
+ created_at timestamptz not null default now(),
+ updated_at timestamptz not null default now(),
+ constraint meridigi_reference_links_http check (url ~* '^https?://')
+);
+drop trigger if exists meridigi_reference_links_touch on public.meridigi_reference_links;
+create trigger meridigi_reference_links_touch before update on public.meridigi_reference_links for each row execute function public.meridigi_touch_control_updated_at();
+alter table public.meridigi_reference_links enable row level security;
+drop policy if exists "MeriDigi public read enabled reference links" on public.meridigi_reference_links;
+create policy "MeriDigi public read enabled reference links" on public.meridigi_reference_links for select to anon,authenticated using(is_enabled=true or public.is_meridigi_admin());
+drop policy if exists "MeriDigi admin manage reference links" on public.meridigi_reference_links;
+create policy "MeriDigi admin manage reference links" on public.meridigi_reference_links for all to authenticated using(public.is_meridigi_admin()) with check(public.is_meridigi_admin());
+grant select on public.meridigi_reference_links to anon,authenticated;
+grant insert,update,delete on public.meridigi_reference_links to authenticated;
