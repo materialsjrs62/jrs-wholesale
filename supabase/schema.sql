@@ -11,6 +11,25 @@ create table if not exists public.profiles (
   created_at timestamptz not null default now()
 );
 
+-- Automatically create a least-privilege staff profile for every auth user.
+-- Promote the intended owner to admin manually using the SQL below.
+create or replace function public.handle_new_auth_user()
+returns trigger language plpgsql security definer
+set search_path = public
+as $
+begin
+  insert into public.profiles (id,email,role)
+  values (new.id,new.email,'staff')
+  on conflict (id) do update set email=excluded.email;
+  return new;
+end;
+$;
+
+drop trigger if exists on_auth_user_created_jrs on auth.users;
+create trigger on_auth_user_created_jrs
+after insert on auth.users
+for each row execute function public.handle_new_auth_user();
+
 create table if not exists public.products (
   id uuid primary key default gen_random_uuid(),
   sku text unique not null,
