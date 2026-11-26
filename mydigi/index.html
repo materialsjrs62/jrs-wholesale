@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#102947">
 <link rel="manifest" href="./manifest.json">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
-<title>MeriDigi | Grow Digital Marketing by Tapas</title>
+<title>MyDigi | Grow Digital Marketing by Tapas</title>
 <style>
 :root{--navy:#102947;--gold:#c9a45c;--ink:#1b2738;--muted:#657386;--line:#e5e9ef;--paper:#f7f8fa}
 *{box-sizing:border-box}
@@ -121,7 +121,7 @@ nav a{font-size:11px;text-align:center;white-space:normal}
 <header>
 <div class="wrap">
 <div class="top">
-<div class="brand">MeriDigi</div>
+<div class="brand">MyDigi</div>
 <div class="tag">Digital Growth Made Simple</div>
 <div class="sub">Grow Digital Marketing by Tapas</div>
 <div class="founder"><a href="https://remotepmc.github.io/confident-closer-pwa/index.html?refresh=15" target="_blank" rel="noopener">Founder of Confident Closer</a></div>
@@ -143,7 +143,7 @@ nav a{font-size:11px;text-align:center;white-space:normal}
 </div>
 </div>
 <section class="hero" id="home">
-<h1>Grow Your Digital Presence with MeriDigi</h1>
+<h1>Grow Your Digital Presence with MyDigi</h1>
 <p>Our digital marketing services, including <a class="hero-service-link" href="#build"><strong>BUILD QUICK</strong></a> and <a class="hero-service-link" href="#build"><strong>BUILD PROFESSIONAL</strong></a>, help you grow your digital presence and showcase your unique products and services.</p>
 <p>Learn essential digital marketing skills through <a class="hero-service-link" href="#seekho"><strong>SEEKHO</strong></a>, with affordable, low-ticket learning options that help you become a confident digital marketing professional.</p>
 <p>Join our network and follow our newsletter for important updates and ideas to sharpen your saw.</p>
@@ -173,7 +173,7 @@ nav a{font-size:11px;text-align:center;white-space:normal}
 </section>
 </main>
 <footer>
-<div class="wrap">MeriDigi · Grow Digital Marketing by Tapas<br>WhatsApp: <a href="https://wa.me/917894531187">78945 31187</a> · Instagram: @meridigim</div>
+<div class="wrap">MyDigi · Grow Digital Marketing by Tapas<br>WhatsApp: <a href="https://wa.me/917894531187">78945 31187</a> · Instagram: @meridigim</div>
 </footer>
 <div class="offer-modal" id="offerModal" role="dialog" aria-modal="true" aria-labelledby="offerTitle" onclick="if(event.target===this)closeOffer()">
 <div class="offer-panel">
@@ -182,7 +182,7 @@ nav a{font-size:11px;text-align:center;white-space:normal}
 <h2 id="offerTitle">Special offer</h2>
 <div><span class="offer-old" id="offerRegular"></span><span class="offer-price" id="offerDiscount"></span></div>
 <p id="offerExpiry"></p>
-<p>Contact MeriDigi to request this offer.</p>
+<p>Contact MyDigi to request this offer.</p>
 <button class="btn" onclick="closeOffer()">Close</button>
 </div>
 </div>
@@ -203,7 +203,7 @@ const audience=s.audience?'<p class="service-audience"><b>Kiske liye:</b> '+esc(
 const listTitle=s.list_title?'<p class="service-list-title">'+esc(s.list_title)+'</p>':'';
 const saving=s.saving?'<div class="service-saving">'+esc(s.saving)+'</div>':'';
 const regular=s.regular_price!=null?'<span class="offer-old">₹'+esc(s.regular_price)+'</span>':'';
-const price='<div class="service-price-row"><div><div class="service-price">'+regular+'₹'+esc(s.discounted_price)+'</div>'+saving+'</div><a class="whatsapp-price-btn" href="https://wa.me/'+mdWa(s.whatsapp_number)+'?text='+encodeURIComponent('Hello MeriDigi, I am interested in '+s.name+'. Please share details.')+'" target="_blank" rel="noopener">WhatsApp · ₹'+esc(s.discounted_price)+'</a></div>';
+const price='<div class="service-price-row"><div><div class="service-price">'+regular+'₹'+esc(s.discounted_price)+'</div>'+saving+'</div><a class="whatsapp-price-btn" href="https://wa.me/'+mdWa(s.whatsapp_number)+'?text='+encodeURIComponent('Hello MyDigi, I am interested in '+s.name+'. Please share details.')+'" target="_blank" rel="noopener">WhatsApp · ₹'+esc(s.discounted_price)+'</a></div>';
 const note=s.price_note?'<p class="service-note">'+esc(s.price_note)+'</p>':'';
 return '<article class="card"><h3>'+esc(s.name)+'</h3>'+description+audience+listTitle+details+price+note+'</article>';
 }
@@ -217,7 +217,7 @@ document.getElementById('offerExpiry').textContent=val(e)?'Offer valid until '+v
 document.getElementById('offerModal').classList.add('open');
 };
 window.closeOffer=()=>document.getElementById('offerModal').classList.remove('open');
-async function loadMeriDigiControls(){
+async function loadMyDigiControls(){
 if(!db)return;
 const [settings,links,services,refs]=await Promise.all([
 db.from('meridigi_site_settings').select('*').eq('id',1).maybeSingle(),
@@ -283,8 +283,8 @@ return '<article class="news-item"><div class="news-date">'+esc(n.edition_date)+
 }).join('');
 }
 loadNewsletter();
-loadMeriDigiControls();
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(err=>console.warn("MeriDigi offline support unavailable",err)))}
+loadMyDigiControls();
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(err=>console.warn("MyDigi offline support could not be enabled. Check your connection and browser site permissions.",err)))}
 </script>
 </body>
 </html>
