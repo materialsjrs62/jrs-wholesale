@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "MyDigi",
+  "short_name": "MyDigi",
+  "description": "Grow your digital presence with MyDigi.",
+  "lang": "en-IN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f7f8fa",
+  "theme_color": "#102947",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
