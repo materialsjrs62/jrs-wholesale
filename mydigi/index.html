@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#102947">
 <link rel="manifest" href="./manifest.json">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
-<title>MyDigi | Grow Digital Marketing by Tapas</title>
+<title>MyDigi | Digital Growth Made Simple</title>
 <style>
 :root{--navy:#102947;--gold:#c9a45c;--ink:#1b2738;--muted:#657386;--line:#e5e9ef;--paper:#f7f8fa}
 *{box-sizing:border-box}
@@ -21,47 +21,25 @@ header{background:var(--navy);color:white;border-bottom:4px solid var(--gold)}
 .tag{font-size:23px;font-weight:750;margin-top:8px}
 .founder{font-size:17px;font-weight:650;color:#d3dce7;margin-top:7px}
 .founder a{color:#ffe36e;text-decoration:underline;text-underline-offset:3px}
-.founder a:hover{color:#fff}
-nav{display:grid;grid-template-columns:repeat(2,max-content);gap:12px;padding:13px 0 17px;align-items:center}
-nav a{color:#fff;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.5px}
-nav a:hover{color:#e6d5ad}
-.top-action{display:inline-block;padding:7px 10px;border-radius:7px}
+nav{display:flex;flex-wrap:wrap;gap:10px;padding:13px 0 17px}
+nav a{color:#102947;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.3px;text-align:center}
+.top-action{display:inline-block;padding:9px 12px;border-radius:7px;background:#9ed8ff}
 .top-action.join{background:#168447;color:#fff}
-.top-action.newsletter-nav{background:#ffe36e;color:#172437;border:1px solid #ffe36e}
-.top-action.share-discount{background:#c9a45c!important;color:#172437!important}
-.top-action.digital-platform{background:#ffe36e!important;color:#172437!important}
-.top-action.jump{background:#9ed8ff!important;color:#102947!important}
-.top-action:not(.join):not(.newsletter-nav):not(.updates){background:#9ed8ff;color:#102947}
-.hero{padding:35px 0 30px}
-.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.15;color:var(--navy);margin:0 0 10px}
-.hero p{color:var(--muted);max-width:680px;margin:0}
-.hero-service-link{display:inline-block;padding:2px 8px;margin:2px 1px;border:1px solid var(--gold);border-radius:6px;background:#fff4d6;color:#624719;font-weight:850;text-decoration:none;white-space:nowrap}
-.hero-service-link:hover,.hero-service-link:focus{background:#ffe39a;color:#3d2b0d;text-decoration:underline}
+.top-action.digital-platform{background:#ffe36e}
+.top-action.influencer-nav{background:#ffe36e;border:1px solid #ffe36e}
+.hero{padding:38px 0 30px}
+.hero h1{font-size:clamp(30px,5.5vw,48px);line-height:1.12;color:var(--navy);margin:0 0 15px;max-width:850px}
+.hero p{color:#536176;max-width:760px;margin:0 0 12px;font-size:17px}
+.btn{display:inline-block;background:#9ed8ff;color:#102947;text-decoration:none;border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:800;cursor:pointer}
+.btn.gold{background:#ffe36e;color:#172437}
 .section{padding:24px 0}
 .section h2{color:var(--navy);font-size:25px;margin:0 0 5px}
 .intro{color:var(--muted);margin:0 0 18px}
 .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .card{background:white;border:1px solid var(--line);border-radius:14px;padding:20px}
 .card h3{margin:0 0 3px;color:var(--navy);font-size:20px}
-.hint{font-size:13px;color:#8b6b31;font-weight:700}
-.price{font-size:23px;font-weight:850;color:var(--navy);margin:12px 0 5px}
 .card ul{padding-left:19px;margin:12px 0;color:#48566a}
-.btn{display:inline-block;background:#9ed8ff;color:#102947;text-decoration:none;border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:750;cursor:pointer}
-.btn.gold{background:#ffe36e;color:#172437}
 .line{border:0;border-top:1px solid var(--line);margin:12px 0}
-.contact{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
-.contact a{color:var(--navy);font-weight:700}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.field label{display:block;font-size:13px;font-weight:700;margin:0 0 5px}
-.field input,.field select,.field textarea{width:100%;padding:11px;border:1px solid #d5dce5;border-radius:8px;font:inherit;background:#fff}
-.field.full{grid-column:1/-1}
-.field textarea{min-height:92px;resize:vertical}
-.consent{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--muted);margin:12px 0}
-.consent input{margin-top:4px}
-.msg{display:none;padding:11px;border-radius:8px;margin:12px 0;font-size:14px}
-.msg.show{display:block}
-.msg.ok{background:#e7f5ed;color:#176b43}
-.msg.err{background:#fae9e9;color:#922b32}
 footer{background:var(--navy);color:#d5deea;padding:24px 0;margin-top:30px;font-size:13px}
 footer a{color:#e6d5ad}
 .newsletter{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:14px}
@@ -75,11 +53,7 @@ footer a{color:#e6d5ad}
 .news-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
 .news-links a{color:var(--navy);font-weight:750}
 .news-empty{color:var(--muted);padding:12px 0}
-.free-tag{display:inline-block;vertical-align:middle;margin-left:8px;padding:3px 9px;border-radius:20px;background:#e4f5eb;color:#176b43;font-size:11px;font-weight:850;letter-spacing:.4px}
-.price-old{text-decoration:line-through;color:#7c8796;font-size:16px;margin-right:8px}
-.discount-tag{display:inline-block;background:#fff0df;color:#a84d0b;padding:4px 8px;border-radius:20px;font-size:11px;font-weight:800;margin:5px 0}
-.promo-strip{border:1px solid #f0c58c;background:#fff8ef;border-radius:12px;padding:14px;margin:12px 0}
-.discount-action{display:inline-block;border:0;border-radius:7px;padding:8px 12px;background:#ffe36e;color:#694500;font-weight:800;cursor:pointer;margin:6px 0}
+.free-tag{display:inline-block;vertical-align:middle;margin-left:8px;padding:3px 9px;border-radius:20px;background:#e4f5eb;color:#176b43;font-size:11px;font-weight:850}
 .offer-modal{display:none;position:fixed;inset:0;background:rgba(8,20,35,.68);z-index:1000;align-items:center;justify-content:center;padding:18px}
 .offer-modal.open{display:flex}
 .offer-panel{background:#fff;border-radius:16px;padding:24px;width:min(420px,100%);box-shadow:0 16px 50px rgba(0,0,0,.25);position:relative}
@@ -87,6 +61,7 @@ footer a{color:#e6d5ad}
 .offer-close{position:absolute;right:12px;top:10px;border:0;background:#edf1f5;border-radius:50%;width:34px;height:34px;font-size:20px;cursor:pointer}
 .offer-price{font-size:30px;font-weight:900;color:#168447}
 .offer-old{color:#798495;text-decoration:line-through;margin-right:8px}
+.discount-tag{display:inline-block;background:#fff0df;color:#a84d0b;padding:4px 8px;border-radius:20px;font-size:11px;font-weight:800;margin:5px 0}
 .service-description{font-weight:750;color:var(--navy);margin:5px 0}
 .service-audience{color:#48566a;margin:8px 0}
 .service-list-title{font-weight:750;color:var(--navy);margin:12px 0 0}
@@ -95,25 +70,23 @@ footer a{color:#e6d5ad}
 .service-price .offer-old{font-size:16px}
 .service-saving{font-size:13px;color:#168447;font-weight:750;margin-top:2px}
 .whatsapp-price-btn{display:inline-block;background:#168447;color:#fff!important;text-decoration:none;border-radius:8px;padding:11px 14px;font-weight:800;font-size:14px;white-space:nowrap}
-.whatsapp-price-btn:hover{background:#116b39}
 .service-note{font-size:14px;color:var(--muted);margin:8px 0 0}
-.hook-box{margin:20px 0 24px}
-.hook{font-size:24px;font-weight:800;color:#12294a;margin:0 0 10px}
-.hook-sub p{font-size:17px;line-height:1.6;color:#4a5568;margin:0 0 8px}
-.hook-sub .hook-end{font-weight:800;color:#12294a;margin-top:12px}
+.influencer-section{background:linear-gradient(135deg,#102947,#1b456b);color:#fff;border-radius:16px;padding:28px 22px;margin:16px 0 26px}
+.influencer-section h2{color:#ffe36e;font-size:clamp(26px,5vw,36px);line-height:1.2;margin:0 0 12px}
+.influencer-section .intro{color:#e0e9f2;max-width:780px}
+.influencer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.influencer-card{background:#fff;color:#1b2738;padding:17px;border-radius:12px}
+.influencer-card h3{color:#102947;font-size:18px;margin:0 0 8px}
+.influencer-card p{font-size:14px;margin:0;color:#536176}
+.influencer-cta{display:inline-block;margin-top:20px;background:#ffe36e;color:#172437;padding:12px 18px;border-radius:8px;font-weight:850;text-decoration:none}
+.influencer-note{font-size:12px;color:#d5deea;margin-top:14px}
 @media(max-width:620px){
 .cards{grid-template-columns:1fr}
-.formgrid{grid-template-columns:1fr}
-.field.full{grid-column:auto}
-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-nav a{font-size:11px;text-align:center;white-space:normal}
-.top-action{padding:8px 5px}
-.brand{font-size:31px}
-.sub{font-size:17px}
-.tag{font-size:20px}
-.founder{font-size:15px}
+.influencer-grid{grid-template-columns:1fr}
+nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+nav a{font-size:11px}
+.brand{font-size:31px}.sub{font-size:17px}.tag{font-size:20px}.founder{font-size:15px}
 .service-price-row{align-items:flex-start}
-.whatsapp-price-btn{padding:10px 12px}
 }
 </style>
 </head>
@@ -128,26 +101,42 @@ nav a{font-size:11px;text-align:center;white-space:normal}
 </div>
 <nav>
 <a class="top-action join" id="joinNav" href="https://wa.me/917894531187?text=May%20I%20join%3F">CLICK &amp; JOIN</a>
+<a class="top-action influencer-nav" href="#influencer">INFLUENCER MONETIZATION</a>
 <a class="top-action digital-platform" href="#referenceLinks">OUR DIGITAL PLATFORMS</a>
 </nav>
 </div>
 </header>
 <main class="wrap">
-<div class="hook-box">
-<h2 class="hook">Social media chalate ho, par business nahi badh raha?</h2>
-<div class="hook-sub">
-<p>Kya aap social media sirf entertainment ke liye use karte ho?</p>
-<p>Kya apna product ya saman bechna chahte ho, par customers nahi mil rahe?</p>
-<p>Kya aapko sahi digital marketing ki help <b>kam paisa mein aur turant</b> chahiye?</p>
-<p class="hook-end">Hum bana ke denge, sikhayenge, aur hamare network se aapki growth mein madad bhi milegi. Kaise? Details neeche hain ↓</p>
-</div>
-</div>
 <section class="hero" id="home">
-<h1>Grow Your Digital Presence with MyDigi</h1>
-<p>Our digital marketing services, including <a class="hero-service-link" href="#build"><strong>BUILD QUICK</strong></a> and <a class="hero-service-link" href="#build"><strong>BUILD PROFESSIONAL</strong></a>, help you grow your digital presence and showcase your unique products and services.</p>
-<p>Learn essential digital marketing skills through <a class="hero-service-link" href="#seekho"><strong>SEEKHO</strong></a>, with affordable, low-ticket learning options that help you become a confident digital marketing professional.</p>
-<p>Join our network and follow our newsletter for important updates and ideas to sharpen your saw.</p>
+<h1>You Have An Audience. Now Build A Business With It.</h1>
+<p>Turn your influence into an entrepreneurial opportunity with MyDigi.</p>
+<p>Your audience already knows you. Combine their trust and reach with MyDigi's digital services, technology and business support.</p>
+<p><strong>You bring the audience. MyDigi powers the business.</strong></p>
+<p>Explore how your existing audience can become a starting point for digital business opportunities.</p>
+<a class="btn gold" href="#influencer">EXPLORE INFLUENCER MONETIZATION</a>
 </section>
+
+<section class="influencer-section" id="influencer">
+<h2>INFLUENCER MONETIZATION</h2>
+<p class="intro">Influencer hain? Aapke paas already audience, engagement aur trust hai. MyDigi helps you use that foundation to explore entrepreneurship and business opportunities.</p>
+<div class="influencer-grid">
+<article class="influencer-card">
+<h3>01. Aapke Paas Already Hai</h3>
+<p>Followers, audience engagement, trust and communication skills. You are not starting from zero.</p>
+</article>
+<article class="influencer-card">
+<h3>02. MyDigi Ka Support</h3>
+<p>Digital services, technology infrastructure, business solutions and backend administration.</p>
+</article>
+<article class="influencer-card">
+<h3>03. Dono Milkar</h3>
+<p>You connect with your audience and generate genuine customer leads. MyDigi supports the service delivery and backend process.</p>
+</article>
+</div>
+<a class="influencer-cta" href="https://wa.me/917894531187?text=Hello%20MyDigi%2C%20I%20am%20interested%20in%20Influencer%20Monetization.%20Please%20share%20the%20details." target="_blank" rel="noopener">ENQUIRE FOR PARTNERSHIP</a>
+<p class="influencer-note">Partner earnings depend on eligible business generated. Earnings are not guaranteed.</p>
+</section>
+
 <section class="section" id="newsletter">
 <h2>NEWSLETTER <span class="free-tag">FREE</span></h2>
 <p class="intro">Regular updates, important announcements and useful information — all in one place.</p>
@@ -164,7 +153,6 @@ nav a{font-size:11px;text-align:center;white-space:normal}
 <p class="intro">Aap khud seekh lo</p>
 <div class="cards" id="seekhoServices"><p class="news-empty">Loading SEEKHO options…</p></div>
 </section>
-<hr class="line">
 <hr class="line">
 <section class="section" id="referenceLinks">
 <h2>OUR DIGITAL PLATFORMS</h2>
@@ -217,6 +205,7 @@ document.getElementById('offerExpiry').textContent=val(e)?'Offer valid until '+v
 document.getElementById('offerModal').classList.add('open');
 };
 window.closeOffer=()=>document.getElementById('offerModal').classList.remove('open');
+
 async function loadMyDigiControls(){
 if(!db)return;
 const [settings,links,services,refs]=await Promise.all([
@@ -230,9 +219,6 @@ const st=settings.data;
 const u='https://wa.me/'+mdWa(st.join_whatsapp_number)+'?text='+encodeURIComponent(st.join_message||'May I join?');
 const el=document.getElementById('joinNav');
 if(el)el.href=u;
-const setText=(sel,val)=>{const e=document.querySelector(sel);if(e&&val)e.textContent=val};
-setText('.tag','Digital Growth Made Simple');
-setText('.sub',st.header_subtitle||'Grow Digital Marketing by Tapas');
 const fl=document.querySelector('.founder a');
 if(fl){fl.textContent=st.header_founder_text||'Founder of Confident Closer';fl.href=st.header_founder_url||'https://remotepmc.github.io/confident-closer-pwa/index.html?refresh=15'}
 const sizes=[['.brand',st.header_brand_size,36],['.tag',st.header_tagline_size,23],['.sub',st.header_subtitle_size,19],['.founder',st.header_founder_size,17]];
@@ -269,6 +255,7 @@ whatsapp_number:contactFor('SEEKHO','SEEKHO LEARN').whatsapp_number||'9178945311
 document.getElementById('buildServices').innerHTML=[quick,professional].map(mdServiceCard).join('');
 document.getElementById('seekhoServices').innerHTML=mdServiceCard(seekho);
 }
+
 async function loadNewsletter(){
 const box=document.getElementById('newsletterList');
 if(!db){box.innerHTML='<p class="news-empty">Newsletter is temporarily unavailable. Please check again soon.</p>';return}
@@ -288,4 +275,3 @@ if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.se
 </script>
 </body>
 </html>
-
