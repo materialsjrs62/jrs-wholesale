@@ -154,9 +154,8 @@ footer{color:var(--muted);font-size:12px;line-height:1.5}
 <p>E-mail id - <a href="mailto:confidentc@proton.me" style="color:#f0cf86">confidentc@proton.me</a></p>
 <p><a href="https://ccpmcbbsr.blogspot.com" target="_blank" rel="noopener" style="color:#f0cf86">https://ccpmcbbsr.blogspot.com</a></p>
 </div>
-<div id="contactLinks"><a class="btn btn-gold" href="https://docs.google.com/forms/d/e/1FAIpQLSeuY9CtgTKfNv-R5yyciVy7fS47cWvzMQ1RqeF2TnqsD8w6kQ/viewform" target="_blank" rel="noopener">Submit Details</a></div>
+<div id="contactLinks"><a class="btn btn-gold" href="https://docs.google.com/forms/d/e/1FAIpQLSeuY9CtgTKfNv-R5yyciVy7fS47cWvzMQ1RqeF2TnqsD8w6kQ/viewform" target="_blank" rel="noopener">Submit Details</a><small style="display:block;margin-top:7px;color:#d5dcea;font-size:11px;line-height:1.4">Register to avoid bot and spam theft.</small></div>
 </section>
-<div style="margin-top:16px;background:#fff8e9;border:1px solid #ead8ae;border-left:4px solid var(--gold);border-radius:10px;padding:13px 16px;color:#625338;font-size:13px"><b style="display:block;color:#493a1e">To avoid bot and spam entries and maintain security</b>Please provide genuine details through our official entry form. Details are reviewed manually before access is shared.</div>
 <footer>MyDigi Welcome · Digital services and business support</footer></main>
 <script>
 (()=>{const db=window.myDigiSupabase;const $=id=>document.getElementById(id);const defaults={
@@ -178,7 +177,7 @@ $('serviceGrid').innerHTML=(c.services||defaults.services).filter(x=>x.visible!=
 $('exploreOptions').innerHTML=(c.explore_options||defaults.explore_options).filter(o=>o&&o.url&&o.url.trim()).slice(0,10).map((o,i)=>'<a href="'+esc(o.url)+'" target="_blank" rel="noopener">'+esc(o.label||('Option '+(i+1)))+' ↗</a>').join('')||'<span style="color:#68758a;padding:8px">Service links will be updated here.</span>';
 $('modelGrid').innerHTML=(c.models||defaults.models).filter(x=>x.visible!==false).map(s=>'<article class="model"><h3>'+esc(s.title)+'</h3><p>'+esc(s.description)+'</p></article>').join('');
 $('statsGrid').innerHTML=(c.stats||defaults.stats).map(s=>'<div class="stat"><strong>'+esc(s.value)+'</strong><span>'+esc(s.label)+'</span></div>').join('');
-$('contactLinks').innerHTML='<a class="btn btn-gold" href="https://docs.google.com/forms/d/e/1FAIpQLSeuY9CtgTKfNv-R5yyciVy7fS47cWvzMQ1RqeF2TnqsD8w6kQ/viewform" target="_blank" rel="noopener">Submit Details</a>'+((c.whatsapp||[]).filter(w=>w.visible!==false).map(w=>'<a class="btn btn-outline" style="background:#fff;color:#17223a;margin-left:7px" href="https://wa.me/'+String(w.number||'').replace(/\D/g,'')+'" target="_blank" rel="noopener">'+esc(w.label||'WhatsApp')+'</a>').join(''));}
+$('contactLinks').innerHTML='<a class="btn btn-gold" href="https://docs.google.com/forms/d/e/1FAIpQLSeuY9CtgTKfNv-R5yyciVy7fS47cWvzMQ1RqeF2TnqsD8w6kQ/viewform" target="_blank" rel="noopener">Submit Details</a><small style="display:block;margin-top:7px;color:#d5dcea;font-size:11px;line-height:1.4">Register to avoid bot and spam theft.</small>'+((c.whatsapp||[]).filter(w=>w.visible!==false).map(w=>'<a class="btn btn-outline" style="background:#fff;color:#17223a;margin-left:7px" href="https://wa.me/'+String(w.number||'').replace(/\D/g,'')+'" target="_blank" rel="noopener">'+esc(w.label||'WhatsApp')+'</a>').join(''));}
 if(db){db.from('md_site_content').select('content').eq('id','welcome').maybeSingle().then(({data,error})=>{if(error)console.warn('MyDigi content load:',error.message);let saved=data?.content||{};if(typeof saved==='string'){try{saved=JSON.parse(saved)}catch(parseError){console.warn('MyDigi content parse:',parseError);saved={}}}const content={...defaults,...saved};if(!Array.isArray(saved.services)||saved.services.length<5)content.services=defaults.services;render(content)}).catch(error=>{console.warn('MyDigi content request:',error);render(defaults)})}else render(defaults);
 })();
 </script></body></html>
