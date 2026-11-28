@@ -43,16 +43,16 @@ footer{padding:24px 0 0;color:#8992a2;font-size:12px;text-align:center}
 </section>
 <h2 class="section-title">How it works</h2>
 <section class="steps">
-<article class="step"><div class="stepno">01</div><h3>Share your details</h3><p>Complete the short customer details form with your name, WhatsApp number and requirement.</p></article>
-<article class="step"><div class="stepno">02</div><h3>WhatsApp confirmation</h3><p>Our team manually checks your details and contacts you on the number you provided.</p></article>
+<article class="step"><div class="stepno">01</div><h3>Share your details</h3><p>Enter only your name and 10-digit WhatsApp number.</p></article>
+<article class="step"><div class="stepno">02</div><h3>WhatsApp confirmation</h3><p>We manually confirm your details on WhatsApp. No OTP is required.</p></article>
 <article class="step"><div class="stepno">03</div><h3>Receive portal access</h3><p>After approval, we share your private MyDigi customer portal link.</p></article>
 </section>
 <section class="panel">
 <h2>Start with MyDigi Welcome</h2>
-<p class="muted">Choose the support you need and share a few details. There is no OTP or paid verification step in this trial process.</p>
+<p class="muted">Enter only your name and WhatsApp number. We will contact you personally to confirm your request. No OTP or paid verification is required.</p>
 <div class="formbox">
-<strong>Customer details form</strong>
-<p class="muted" id="formMessage">The Google Form link will be connected here. Once connected, tap below to submit your details.</p>
+<strong>Basic customer details</strong>
+<p class="muted" id="formMessage">The form will ask only for your name and WhatsApp number. Please confirm that the number belongs to you and that your request is genuine — no bots, fake entries or spam.</p>
 <a class="btn gold" id="formButton" href="#" hidden>Open customer details form</a>
 </div>
 <div class="trust"><span>✓ Manual WhatsApp verification</span><span>✓ Free trial onboarding</span><span>✓ Portal link shared after approval</span></div>
@@ -65,7 +65,7 @@ const GOOGLE_FORM_URL = "";
 if (GOOGLE_FORM_URL) {
  const button=document.getElementById("formButton");
  button.href=GOOGLE_FORM_URL;button.hidden=false;
- document.getElementById("formMessage").textContent="Open the secure customer details form and submit your information.";
+ document.getElementById("formMessage").textContent="Open the customer details form and submit your information.";
 }
 </script>
 </body>
