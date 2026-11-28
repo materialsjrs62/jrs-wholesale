@@ -11,11 +11,11 @@
 <main class="wrap">
 <section class="hero"><div class="tag">CUSTOMER PORTAL · TWO-PORTAL TRIAL</div><h1>Bring your business needs.<br>We will organise the solution.</h1><p>Sign in or create an account, then submit your service requirement. Your request is stored securely in the MyDigi database.</p></section>
 <section class="grid">
-<article class="card" id="authCard"><h2>Customer access</h2><p class="muted">Enter your WhatsApp number. We will send a one-time password to verify your access.</p>
-<label>WhatsApp mobile number</label><input id="phoneLogin" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 98765 43210">
+<article class="card" id="authCard"><h2>Customer access</h2><p class="muted">Enter the 10-digit mobile number linked to your WhatsApp. We will send a one-time password to that number.</p>
+<label>WhatsApp mobile number</label><input id="phoneLogin" type="tel" inputmode="numeric" autocomplete="tel-national" autocomplete="tel-national" maxlength="10" placeholder="9876543210">
 <button id="sendOtp">Send WhatsApp OTP</button>
 <div id="otpArea" class="hidden"><label>Enter OTP</label><input id="otp" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="Enter verification code"><button id="verifyOtp">Verify and continue</button><button id="resendOtp" class="secondary">Resend OTP</button></div>
-<div class="note">Use the full international number, including country code (for India, +91). WhatsApp OTP delivery must be enabled for this Supabase project before live customer verification can work.</div></article>
+<div class="note">Enter only the 10 digits of the WhatsApp-linked mobile number. No country code is needed. WhatsApp OTP delivery must be enabled for this Supabase project before live customer verification can work.</div></article>
 <article class="card"><h2>Account status</h2><p id="accountState" class="muted">Not verified.</p><button id="signout" class="secondary hidden">Sign out</button><div id="authMessage" class="status" role="status" aria-live="polite">Verify your WhatsApp number to continue.</div></article>
 <article class="card"><h2>Account status</h2><p id="accountState" class="muted">Not signed in.</p><button id="signout" class="secondary hidden">Sign out</button><div id="authMessage" class="status" role="status" aria-live="polite">Create an account or sign in to continue.</div></article>
 </section>
@@ -40,10 +40,8 @@
  let pendingPhone="";
  if(!client){say("authMessage","Connection library did not load. Refresh the page or try again later.");return;}
  function normalisePhone(raw){
-   let p=raw.replace(/[\\s()-]/g,"");
-   if(p.startsWith("00"))p="+"+p.slice(2);
-   if(!p.startsWith("+"))p="+91"+p.replace(/^0+/,"");
-   return p;
+   const digits=raw.replace(/\\D/g,"");
+   return digits.length===10 ? "+91"+digits : "";
  }
  async function refresh(){
    const {data:{session}}=await client.auth.getSession();
@@ -55,8 +53,9 @@
    if(user)say("authMessage","WhatsApp number verified. You can submit a service request.");
  }
  async function sendOtp(){
-   const phone=normalisePhone(byId("phoneLogin").value.trim());
-   if(!/^\\+[1-9]\\d{7,14}$/.test(phone)){say("authMessage","Enter a valid mobile number with country code, for example +919876543210.");return;}
+   const entered=byId("phoneLogin").value.replace(/\\D/g,"");
+   const phone=normalisePhone(entered);
+   if(!phone){say("authMessage","Enter exactly 10 digits of the mobile number linked to your WhatsApp.");return;}
    pendingPhone=phone;
    byId("sendOtp").disabled=true;say("authMessage","Requesting WhatsApp verification code…");
    const {error}=await client.auth.signInWithOtp({phone,options:{channel:"whatsapp"}});
