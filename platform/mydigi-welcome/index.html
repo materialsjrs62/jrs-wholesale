@@ -54,20 +54,12 @@ footer{padding:24px 0 0;color:#8992a2;font-size:12px;text-align:center}
 <div class="formbox">
 <strong>Basic customer details</strong>
 <p class="muted" id="formMessage">The form will ask only for your name and WhatsApp number. Please confirm that the number belongs to you and that your request is genuine — no bots, fake entries or spam.</p>
-<a class="btn gold" id="formButton" href="#" hidden>Open customer details form</a>
+<a class="btn gold" id="formButton" href="https://docs.google.com/forms/d/e/1FAIpQLSeuY9CtgTKfNv-R5yyciVy7fS47cWvzMQ1RqeF2TnqsD8w6kQ/viewform" target="_blank" rel="noopener">Open customer details form</a>
 </div>
 <div class="trust"><span>✓ Manual WhatsApp verification</span><span>✓ Free trial onboarding</span><span>✓ Portal link shared after approval</span></div>
 </section>
 <footer>MyDigi Welcome · Customer onboarding · Trial process</footer>
 </main>
-<script>
-/* Add the Google Form URL here when it is ready. */
-const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeuY9CtgTKfNv-R5yyciVy7fS47cWvzMQ1RqeF2TnqsD8w6kQ/viewform?usp=dialog";
-if (GOOGLE_FORM_URL) {
- const button=document.getElementById("formButton");
- button.href=GOOGLE_FORM_URL;button.hidden=false;
- document.getElementById("formMessage").textContent="Open the customer details form and submit your information.";
-}
-</script>
+
 </body>
 </html>
