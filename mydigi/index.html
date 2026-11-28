@@ -15,7 +15,10 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
 .wrap{width:min(980px,calc(100% - 32px));margin:auto}
 header{background:var(--navy);color:white;border-bottom:4px solid var(--gold)}
-.top{padding:24px 0 18px}
+.top{padding:24px 0 18px;position:relative}
+.portal-link{display:inline-block;background:#ffe36e;color:#172437;text-decoration:none;font-size:12px;font-weight:850;padding:9px 12px;border-radius:7px;border:1px solid #c9a45c;white-space:nowrap}
+.top>.portal-link{position:absolute;right:0;top:22px}
+@media(max-width:620px){.top>.portal-link{top:18px;right:0;padding:7px 9px;font-size:10px}.brand{padding-right:112px}}
 .brand{font-size:36px;font-weight:850;letter-spacing:-.7px}
 .sub{color:#e6d5ad;font-size:19px;font-weight:700}
 .tag{font-size:23px;font-weight:750;margin-top:8px}
@@ -98,6 +101,7 @@ nav a{font-size:11px}
 <div class="tag">Digital Growth Made Simple</div>
 <div class="sub">Grow Digital Marketing by Tapas</div>
 <div class="founder"><a href="https://remotepmc.github.io/confident-closer-pwa/index.html?refresh=15" target="_blank" rel="noopener">Founder of Confident Closer</a></div>
+<a class="portal-link" href="../mydigi-admin/">ADMIN PORTAL</a>
 </div>
 <nav>
 <a class="top-action join" id="joinNav" href="https://wa.me/917894531187?text=May%20I%20join%3F">CLICK &amp; JOIN</a>
