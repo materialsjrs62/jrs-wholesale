@@ -11,11 +11,12 @@
 <main class="wrap">
 <section class="hero"><div class="tag">CUSTOMER PORTAL · TWO-PORTAL TRIAL</div><h1>Bring your business needs.<br>We will organise the solution.</h1><p>Sign in or create an account, then submit your service requirement. Your request is stored securely in the MyDigi database.</p></section>
 <section class="grid">
-<article class="card" id="authCard"><h2>Customer account</h2><p class="muted">Use your email address to create an account or sign in.</p>
-<label>Email</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com">
-<label>Password</label><input id="password" type="password" autocomplete="current-password" placeholder="At least 6 characters">
-<button id="signup">Create account</button><button id="signin" class="secondary">Sign in</button>
-<div class="note">After signup, check your email if confirmation is requested. Use the same email and password to sign in.</div></article>
+<article class="card" id="authCard"><h2>Customer access</h2><p class="muted">Enter your WhatsApp number. We will send a one-time password to verify your access.</p>
+<label>WhatsApp mobile number</label><input id="phoneLogin" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 98765 43210">
+<button id="sendOtp">Send WhatsApp OTP</button>
+<div id="otpArea" class="hidden"><label>Enter OTP</label><input id="otp" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="Enter verification code"><button id="verifyOtp">Verify and continue</button><button id="resendOtp" class="secondary">Resend OTP</button></div>
+<div class="note">Use the full international number, including country code (for India, +91). WhatsApp OTP delivery must be enabled for this Supabase project before live customer verification can work.</div></article>
+<article class="card"><h2>Account status</h2><p id="accountState" class="muted">Not verified.</p><button id="signout" class="secondary hidden">Sign out</button><div id="authMessage" class="status" role="status" aria-live="polite">Verify your WhatsApp number to continue.</div></article>
 <article class="card"><h2>Account status</h2><p id="accountState" class="muted">Not signed in.</p><button id="signout" class="secondary hidden">Sign out</button><div id="authMessage" class="status" role="status" aria-live="polite">Create an account or sign in to continue.</div></article>
 </section>
 <section class="card hidden" id="requestCard"><span class="tag">NEW SERVICE REQUEST</span><h2 style="margin-top:12px">What help do you need?</h2>
@@ -28,7 +29,7 @@
 <label>Tell us what you need</label><textarea id="details" rows="4" required maxlength="3000" placeholder="Describe your requirement. Do not include passwords or sensitive financial information."></textarea>
 <button type="submit" id="submitRequest">Submit service request</button>
 </form><div id="requestMessage" class="status" role="status" aria-live="polite">Your request will be sent to MyDigi securely after submission.</div></section>
-<div class="note">Trial mode: customer requests are submitted directly into the shared MyDigi database for owner review in MyControl. MyPartner is not active in this trial. WhatsApp OTP, file uploads, plan approval and payment verification are later implementation steps.</div>
+<div class="note">Trial mode: customer requests are submitted directly into the shared MyDigi database for owner review in MyControl. MyPartner is reserved for a later phase. File uploads, plan approval and payment verification will be added in later stages.</div>
 <div class="footer">MyDigi Application · Customer Portal · Supabase Auth + Database</div>
 </main>
 <script>
@@ -36,32 +37,44 @@
  const client=window.myDigiSupabase;
  const byId=id=>document.getElementById(id);
  const say=(id,msg)=>{byId(id).textContent=msg;};
+ let pendingPhone="";
  if(!client){say("authMessage","Connection library did not load. Refresh the page or try again later.");return;}
+ function normalisePhone(raw){
+   let p=raw.replace(/[\\s()-]/g,"");
+   if(p.startsWith("00"))p="+"+p.slice(2);
+   if(!p.startsWith("+"))p="+91"+p.replace(/^0+/,"");
+   return p;
+ }
  async function refresh(){
    const {data:{session}}=await client.auth.getSession();
    const user=session?.user;
-   byId("accountState").textContent=user?"Signed in as "+user.email:"Not signed in.";
+   byId("accountState").textContent=user?"Verified WhatsApp: "+(user.phone||""):"Not verified.";
    byId("requestCard").classList.toggle("hidden",!user);
    byId("signout").classList.toggle("hidden",!user);
    byId("authCard").classList.toggle("hidden",!!user);
-   if(user)say("authMessage","Account is signed in. You can submit a service request.");
+   if(user)say("authMessage","WhatsApp number verified. You can submit a service request.");
  }
- byId("signup").addEventListener("click",async()=>{
-   const email=byId("email").value.trim(),password=byId("password").value;
-   if(!email||password.length<6){say("authMessage","Enter a valid email and a password of at least 6 characters.");return;}
-   say("authMessage","Creating account…");
-   const {data,error}=await client.auth.signUp({email,password});
-   if(error){say("authMessage",error.message);return;}
-   say("authMessage",data.session?"Account created and signed in.":"Account created. Check your email for a confirmation link, then sign in.");
-   await refresh();
- });
- byId("signin").addEventListener("click",async()=>{
-   const email=byId("email").value.trim(),password=byId("password").value;
-   if(!email||!password){say("authMessage","Enter your email and password.");return;}
-   say("authMessage","Signing in…");
-   const {error}=await client.auth.signInWithPassword({email,password});
-   if(error){say("authMessage",error.message);return;}
-   say("authMessage","Signed in successfully.");await refresh();
+ async function sendOtp(){
+   const phone=normalisePhone(byId("phoneLogin").value.trim());
+   if(!/^\\+[1-9]\\d{7,14}$/.test(phone)){say("authMessage","Enter a valid mobile number with country code, for example +919876543210.");return;}
+   pendingPhone=phone;
+   byId("sendOtp").disabled=true;say("authMessage","Requesting WhatsApp verification code…");
+   const {error}=await client.auth.signInWithOtp({phone,options:{channel:"whatsapp"}});
+   byId("sendOtp").disabled=false;
+   if(error){say("authMessage","OTP could not be sent: "+error.message+" Check that WhatsApp OTP delivery is configured in Supabase.");return;}
+   byId("otpArea").classList.remove("hidden");
+   say("authMessage","OTP request accepted for "+phone+". Check WhatsApp and enter the code here.");
+ }
+ byId("sendOtp").addEventListener("click",sendOtp);
+ byId("resendOtp").addEventListener("click",sendOtp);
+ byId("verifyOtp").addEventListener("click",async()=>{
+   const token=byId("otp").value.trim();
+   if(!pendingPhone||!token){say("authMessage","Enter the OTP sent to your WhatsApp number.");return;}
+   byId("verifyOtp").disabled=true;say("authMessage","Verifying code…");
+   const {error}=await client.auth.verifyOtp({phone:pendingPhone,token,type:"sms"});
+   byId("verifyOtp").disabled=false;
+   if(error){say("authMessage","Verification failed: "+error.message);return;}
+   say("authMessage","WhatsApp number verified successfully.");await refresh();
  });
  byId("signout").addEventListener("click",async()=>{
    const {error}=await client.auth.signOut();say("authMessage",error?error.message:"Signed out.");await refresh();
@@ -69,10 +82,10 @@
  byId("requestForm").addEventListener("submit",async event=>{
    event.preventDefault();
    const {data:{user}}=await client.auth.getUser();
-   if(!user){say("requestMessage","Please sign in again.");await refresh();return;}
+   if(!user){say("requestMessage","Please verify your WhatsApp number again.");await refresh();return;}
    const service=byId("service").value;
    const title=byId("title").value.trim();
-   const requirements={full_name:byId("fullName").value.trim(),phone:byId("phone").value.trim(),business_type:byId("business").value,details:byId("details").value.trim()};
+   const requirements={full_name:byId("fullName").value.trim(),phone:user.phone||byId("phone").value.trim(),business_type:byId("business").value,details:byId("details").value.trim()};
    byId("submitRequest").disabled=true;say("requestMessage","Submitting your request securely…");
    const {data,error}=await client.from("md_requests").insert({customer_id:user.id,service_key:service,partner_id:null,title,requirements,status:"submitted"}).select("id").single();
    byId("submitRequest").disabled=false;
