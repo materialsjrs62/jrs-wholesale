@@ -1,14 +1,59 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="refresh" content="0;url=../mycontrol/">
-<link rel="canonical" href="../mycontrol/">
-<title>MyDigi Admin</title>
-</head>
-<body>
-<p>Opening MyDigi Admin… <a href="../mycontrol/">Continue to MyDigi Admin</a></p>
-<script>location.replace("../mycontrol/");</script>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MyDigi Welcome Admin</title>
+<style>
+:root{--navy:#101b35;--gold:#d9b66d;--ink:#1b2942;--muted:#68758a;--line:#e4e9f1;--paper:#f4f6fa}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 Arial,sans-serif}.top{background:var(--navy);color:white;padding:17px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-size:21px;font-weight:800}.brand span{color:var(--gold)}.top a{color:#f1dfb9;text-decoration:none;font-size:13px}
+main{max-width:1050px;margin:auto;padding:25px 16px 50px}h1{font-size:30px;margin:8px 0}.muted{color:var(--muted)}.tag{display:inline-block;background:#f1e8d5;color:#765a27;padding:5px 10px;border-radius:30px;font-size:11px;font-weight:800;letter-spacing:.5px}
+.card{background:white;border:1px solid var(--line);border-radius:15px;padding:21px;margin:16px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.service{border:1px solid var(--line);border-radius:12px;padding:15px;margin-top:13px}.service h3{margin:0 0 5px}.field{margin:10px 0}label{display:block;font-weight:700;font-size:12px;margin-bottom:5px}input,textarea{width:100%;padding:11px;border:1px solid #d6deea;border-radius:8px;font:inherit;color:var(--ink)}textarea{min-height:65px;resize:vertical}input[type=file]{padding:8px;background:#fafbfc}button,.btn{border:0;border-radius:8px;background:var(--gold);color:#1c2941;padding:11px 15px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block;margin:8px 7px 0 0}button.secondary,.btn.secondary{background:#eaf0f8;color:#243a5d}.status{background:#f4f6fa;border-radius:8px;padding:11px;margin-top:12px;white-space:pre-wrap;color:#45536b}.hidden{display:none!important}.note{background:#fff8e9;border-left:4px solid var(--gold);padding:12px 14px;border-radius:8px;color:#665333;font-size:13px}.preview{background:linear-gradient(120deg,#101b35,#1c3155);color:white;padding:16px;border-radius:10px;margin-top:12px}.preview strong{color:var(--gold)}.service-preview{display:inline-block;vertical-align:top;width:31%;min-width:140px;margin:1%;background:#fff;color:#26334b;border-radius:8px;padding:8px;font-size:12px}.service-preview img{width:100%;height:75px;object-fit:cover;border-radius:5px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.service-preview{width:46%}main{padding:18px 12px}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="../shared/backend.js"></script></head>
+<body><header class="top"><div class="brand">My<span>Digi</span> · Welcome Admin</div><a href="../mydigi-welcome/">Open Public Welcome Page ↗</a></header>
+<main><span class="tag">PRIVATE OWNER CONTROL</span><h1>MyDigi Welcome Admin</h1><p class="muted">Manage the public Welcome page banner, five service images, descriptions and service links from this separate admin website.</p>
+<section class="card" id="loginCard"><h2>Owner sign in</h2><p class="muted">Only an account assigned the owner role in Supabase can edit this page.</p><div class="grid"><div class="field"><label for="email">Owner email</label><input id="email" type="email" autocomplete="username"></div><div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password"></div></div><button id="signin">Sign in</button><div class="status" id="loginStatus" role="status">Private owner access only.</div></section>
+<section id="editor" class="hidden">
+<div class="card"><h2>Welcome banner</h2><div class="grid"><div class="field"><label for="heroTitle">Main heading</label><input id="heroTitle"></div><div class="field"><label for="heroText">Short description</label><textarea id="heroText"></textarea></div></div><div class="field"><label for="heroFile">Upload banner image</label><input id="heroFile" type="file" accept="image/png,image/jpeg,image/webp"><small id="heroStatus" class="muted">JPG, PNG or WebP · Maximum 5 MB</small></div></div>
+<div class="card"><h2>Five service cards</h2><p class="muted">Upload an image and edit the description or destination link for each service.</p><div id="services"></div></div>
+<div class="card"><h2>Preview</h2><button class="secondary" id="preview">Preview current edits</button><div id="previewBox" class="preview">Your Welcome page preview will appear here.</div><button id="save">Save & publish Welcome page</button><button class="secondary" id="signout">Sign out</button><div class="status" id="saveStatus">Your changes are not published until you select Save.</div></div>
+<div class="card"><h2>Customer & Channel Partner Entries</h2><p class="muted">Both record sections are managed in the shared Google Sheet. Open it here to review submissions.</p><a class="btn" href="https://docs.google.com/spreadsheets/d/1bz1GAxktXu4MYQ2enu4uHyeTjyFXNBHEw2FcbD6LHiY/edit?usp=drivesdk" target="_blank" rel="noopener">Open MyDigi Google Sheet ↗</a><div class="note">Customer entries and Channel Partner entries must remain in separate tabs/sections of the same Sheet. This button opens the Sheet; it does not claim to create or synchronise a partner tab automatically.</div></div>
+</section></main>
+<script>
+(()=>{const db=window.myDigiSupabase,$=id=>document.getElementById(id);if(!db){$('loginStatus').textContent='Supabase connection did not load. Refresh this page.';return}
+const base={hero_title:'Digital services. Business growth. One connected platform.',hero_text:'Explore practical digital services and business support. Choose a service below or enter your dedicated portal.',hero_image:'',services:[
+{title:'My Digital Marketing',description:'Digital visibility and marketing support for your business.',image:'',link:'#customer-entry'},
+{title:'E Catalogue',description:'Present your products and services in a clear digital catalogue.',image:'',link:'#customer-entry'},
+{title:'My Payment – Through CEG ERP system',description:'Organised payment collection and tracking through the CEG ERP system.',image:'',link:'#customer-entry'},
+{title:'Business Management – By CEG ERP system',description:'Support for day-to-day business operations using the CEG ERP system.',image:'',link:'#customer-entry'},
+{title:'Teacher',description:'Connect with organised online teaching and skill sessions.',image:'',link:'#customer-entry'}]};
+let content=JSON.parse(JSON.stringify(base));
+const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function renderFields(){ $('heroTitle').value=content.hero_title;$('heroText').value=content.hero_text;
+$('services').innerHTML=base.services.map((s,i)=>{const v={...s,...(content.services[i]||{})};return '<div class="service"><h3>'+esc(v.title)+'</h3><div class="grid"><div class="field"><label>Service title</label><input data-i="'+i+'" data-k="title" value="'+esc(v.title)+'"></div><div class="field"><label>Service destination URL</label><input data-i="'+i+'" data-k="link" value="'+esc(v.link)+'" placeholder="https://... or ../path/"></div></div><div class="field"><label>Description</label><textarea data-i="'+i+'" data-k="description">'+esc(v.description)+'</textarea></div><div class="field"><label>Upload service image (max 5 MB)</label><input type="file" accept="image/png,image/jpeg,image/webp" data-upload="'+i+'"><small id="serviceStatus'+i+'" class="muted">'+(v.image?'Image already uploaded.':'No image uploaded yet; a text tile will show.')+'</small></div></div>'}).join('');
+$('services').querySelectorAll('[data-i]').forEach(el=>el.addEventListener('input',()=>{const i=Number(el.dataset.i),k=el.dataset.k;content.services[i][k]=el.value}));
+$('services').querySelectorAll('[data-upload]').forEach(el=>el.addEventListener('change',()=>uploadImage(el,Number(el.dataset.upload))));
+}
+async function uploadFile(file,path,statusId){if(!file)return null;if(file.size>5*1024*1024){$(statusId).textContent='File exceeds 5 MB. Choose a smaller image.';return null}
+const ext=(file.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'');const key='welcome/'+path+'-'+Date.now()+'.'+ext;
+$(statusId).textContent='Uploading image…';const {error}=await db.storage.from('mydigi-site-assets').upload(key,file,{upsert:true,contentType:file.type});
+if(error){$(statusId).textContent='Upload failed: '+error.message;return null}
+const {data}=db.storage.from('mydigi-site-assets').getPublicUrl(key);$(statusId).textContent='Image uploaded. Save & publish to apply.';return data.publicUrl}
+async function uploadImage(el,i){const url=await uploadFile(el.files[0],'service-'+(i+1),'serviceStatus'+i);if(url)content.services[i].image=url}
+$('heroFile').addEventListener('change',async()=>{const url=await uploadFile($('heroFile').files[0],'hero','heroStatus');if(url)content.hero_image=url});
+async function load(){const {data,error}=await db.from('md_site_content').select('content').eq('id','welcome').maybeSingle();if(error){$('saveStatus').textContent='Could not load saved content: '+error.message;return}
+if(data?.content)content={...base,...data.content,services:base.services.map((s,i)=>({...s,...(data.content.services?.[i]||{})}))};renderFields();$('saveStatus').textContent=data?'Saved Welcome page content loaded.':'Default content loaded. Upload images and save when ready.'}
+function preview(){content.hero_title=$('heroTitle').value;content.hero_text=$('heroText').value;let h='<strong>'+esc(content.hero_title)+'</strong><p>'+esc(content.hero_text)+'</p>';
+if(content.hero_image)h+='<img src="'+esc(content.hero_image)+'" style="width:100%;max-height:130px;object-fit:cover;border-radius:7px">';
+h+='<div>';content.services.forEach(s=>{h+='<div class="service-preview">'+(s.image?'<img src="'+esc(s.image)+'">':'')+'<b>'+esc(s.title)+'</b><p>'+esc(s.description)+'</p></div>'});h+='</div>';$('previewBox').innerHTML=h}
+$('preview').addEventListener('click',preview);
+$('save').addEventListener('click',async()=>{content.hero_title=$('heroTitle').value.trim();content.hero_text=$('heroText').value.trim();$('save').disabled=true;$('saveStatus').textContent='Saving…';
+const {data:userData,error:userError}=await db.auth.getUser();if(userError||!userData.user){$('saveStatus').textContent='Owner session expired. Sign in again.';$('save').disabled=false;return}
+const {error}=await db.from('md_site_content').upsert({id:'welcome',content,updated_by:userData.user.id,updated_at:new Date().toISOString()},{onConflict:'id'});
+$('save').disabled=false;$('saveStatus').textContent=error?'Save failed: '+error.message:'Published successfully. Refresh the public MyDigi Welcome page to view changes.'});
+async function verify(user){const {data,error}=await db.from('md_profiles').select('account_type').eq('id',user.id).maybeSingle();if(error||data?.account_type!=='owner'){$('loginStatus').textContent='Access denied. This account is not assigned the owner role.';return false}
+$('loginCard').classList.add('hidden');$('editor').classList.remove('hidden');await load();return true}
+$('signin').addEventListener('click',async()=>{const email=$('email').value.trim(),password=$('password').value;if(!email||!password){$('loginStatus').textContent='Enter owner email and password.';return}
+$('signin').disabled=true;$('loginStatus').textContent='Checking owner access…';const {data,error}=await db.auth.signInWithPassword({email,password});$('signin').disabled=false;if(error){$('loginStatus').textContent=error.message;return}if(!await verify(data.user))await db.auth.signOut()});
+$('signout').addEventListener('click',async()=>{await db.auth.signOut();$('editor').classList.add('hidden');$('loginCard').classList.remove('hidden');$('loginStatus').textContent='Signed out.'});
+db.auth.getSession().then(async({data})=>{if(data.session?.user&&!await verify(data.session.user))await db.auth.signOut()});
+})();
+</script></body></html>
