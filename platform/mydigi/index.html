@@ -12,7 +12,7 @@
 <section class="hero"><div class="tag">CUSTOMER PORTAL · TWO-PORTAL TRIAL</div><h1>Bring your business needs.<br>We will organise the solution.</h1><p>Sign in or create an account, then submit your service requirement. Your request is stored securely in the MyDigi database.</p></section>
 <section class="grid">
 <article class="card" id="authCard"><h2>Customer access</h2><p class="muted">Enter the 10-digit mobile number linked to your WhatsApp. We will send a one-time password to that number.</p>
-<label>WhatsApp mobile number</label><input id="phoneLogin" type="tel" inputmode="numeric" autocomplete="tel-national" autocomplete="tel-national" maxlength="10" placeholder="9876543210">
+<label>WhatsApp mobile number</label><input id="phoneLogin" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="9876543210">
 <button id="sendOtp">Send WhatsApp OTP</button>
 <div id="otpArea" class="hidden"><label>Enter OTP</label><input id="otp" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="Enter verification code"><button id="verifyOtp">Verify and continue</button><button id="resendOtp" class="secondary">Resend OTP</button></div>
 <div class="note">Enter only the 10 digits of the WhatsApp-linked mobile number. No country code is needed. WhatsApp OTP delivery must be enabled for this Supabase project before live customer verification can work.</div></article>
@@ -40,7 +40,7 @@
  let pendingPhone="";
  if(!client){say("authMessage","Connection library did not load. Refresh the page or try again later.");return;}
  function normalisePhone(raw){
-   const digits=raw.replace(/\\D/g,"");
+   const digits=raw.replace(/\D/g,"");
    return digits.length===10 ? "+91"+digits : "";
  }
  async function refresh(){
@@ -53,7 +53,7 @@
    if(user)say("authMessage","WhatsApp number verified. You can submit a service request.");
  }
  async function sendOtp(){
-   const entered=byId("phoneLogin").value.replace(/\\D/g,"");
+   const entered=byId("phoneLogin").value.replace(/\D/g,"");
    const phone=normalisePhone(entered);
    if(!phone){say("authMessage","Enter exactly 10 digits of the mobile number linked to your WhatsApp.");return;}
    pendingPhone=phone;
