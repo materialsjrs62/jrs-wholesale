@@ -1,3 +1,78 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MyDigi Application | mycontrol</title><style>
-*{box-sizing:border-box}body{margin:0;background:#f4f6fb;color:#17233d;font:15px Arial,sans-serif;line-height:1.55}.top{background:#101b35;color:white;padding:18px 5%}.brand{font-size:21px;font-weight:800}.brand span{color:#8eb2ff}.nav{float:right}.nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:14px}.wrap{max-width:1100px;margin:auto;padding:30px 20px}.eyebrow{color:#315ee8;font-size:12px;font-weight:bold;letter-spacing:1px}.hero h1{font-size:clamp(30px,5vw,46px);line-height:1.12;margin:12px 0}.hero p,.card p{color:#68758c;line-height:1.65}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0}.card{background:white;border:1px solid #e4e9f1;border-radius:16px;padding:22px}.card h2,.card h3{margin:4px 0 10px}.btn{display:inline-block;background:#315ee8;color:#fff;text-decoration:none;border-radius:9px;padding:11px 15px;font-weight:bold}.tag{display:inline-block;background:#e9efff;color:#3154b9;padding:6px 10px;border-radius:20px;font-size:11px;font-weight:bold}.note{background:#edf3ff;border-radius:12px;padding:14px;color:#42577f;font-size:13px;margin-top:18px}label{display:block;font-weight:bold;font-size:13px;margin:13px 0 5px}input,select,textarea{width:100%;padding:12px;border:1px solid #dce2ec;border-radius:8px;font:inherit;background:#fff}button{border:0;background:#315ee8;color:white;padding:12px 16px;border-radius:9px;font-weight:bold;margin-top:16px}li{margin:8px 0}.footer{color:#8791a4;font-size:12px;padding:20px 0}@media(max-width:650px){.nav{float:none;margin-top:12px}.nav a{margin:0 12px 0 0}.wrap{padding:22px 16px}}
-</style></head><body><header class="top"><div class="brand">My<span>Digi</span> Application</div><nav class="nav"><a href="../">Home</a><a href="../mydigi/">MyDigi</a><a href="../mypartner/">MyPartner</a><a href="../mycontrol/">MyControl</a></nav></header><main class="wrap"><section class="hero"><div class="eyebrow">MYCONTROL · OWNER ADMIN CENTRE</div><h1>One control point<br>for all three portals.</h1><p>Review requests, map service plans, verify payments and coordinate delivery. MyControl is the owner-facing operating view.</p></section><section class="grid"><article class="card"><h3>03 Connected portals</h3><p>MyDigi · MyPartner · MyControl</p></article><article class="card"><h3>04 Trial categories</h3><p>Marketing · E-Catalogue · Payment · Teacher</p></article><article class="card"><h3>₹200 Teacher package</h3><p>46-minute session. Partner referral commission ₹50; MyDigi balance ₹150 before operating costs.</p></article></section><section class="card"><h2>Service operations · Demo queue</h2><p>DEMO-1001 · Request received · Map Teacher plan</p><p>DEMO-1002 · Plan required · Review catalogue scope</p><p>DEMO-1003 · Awaiting verification · Verify payment manually</p></section><section class="card" style="margin-top:16px"><h2>Owner controls planned</h2><ul><li>Partner and customer access</li><li>Problem Solver plan library</li><li>Payment verification</li><li>Assignment and SLA tracking</li><li>Commission ledger</li><li>Service status and reports</li></ul><div class="note">This is a visual prototype. No real customer records, payments, commissions or assignments are processed yet.</div></section><div class="footer">MyDigi Application · Trial Version 1.0 · platform/mycontrol/index.html</div></main></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MyControl | MyDigi Owner Admin</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f6fb;color:#17233d;font:15px Arial,sans-serif;line-height:1.5}.top{background:#101b35;color:white;padding:18px 5%}.brand{font-size:21px;font-weight:800}.brand span{color:#d9b66d}.nav{float:right}.nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:14px}.wrap{max-width:1180px;margin:auto;padding:28px 18px}.hero h1{font-size:clamp(28px,4vw,42px);line-height:1.1;margin:10px 0}.muted{color:#68758c}.tag{display:inline-block;background:#e9efff;color:#3154b9;padding:6px 10px;border-radius:20px;font-size:11px;font-weight:bold}.card{background:#fff;border:1px solid #e4e9f1;border-radius:15px;padding:20px;margin:16px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:18px 0}.metric{background:#fff;border:1px solid #e4e9f1;border-radius:14px;padding:18px}.metric strong{font-size:28px;display:block}.metric span{font-size:12px;color:#68758c}label{display:block;font-size:13px;font-weight:bold;margin:12px 0 5px}input{width:100%;padding:12px;border:1px solid #dce2ec;border-radius:8px;font:inherit}button{border:0;background:#315ee8;color:white;padding:11px 15px;border-radius:9px;font-weight:bold;margin:12px 8px 0 0;cursor:pointer}.secondary{background:#e9eef8;color:#24385f}.status{padding:12px;border-radius:9px;background:#f2f5fa;margin-top:12px;white-space:pre-wrap;font-size:13px}.hidden{display:none!important}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:760px;font-size:13px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid #e8edf4;vertical-align:top}th{background:#f7f9fc;color:#42516c;position:sticky;top:0}td{max-width:280px;overflow-wrap:anywhere}.pill{display:inline-block;padding:4px 8px;border-radius:20px;background:#edf3ff;color:#3154b9;font-size:11px}.note{background:#fff7e8;border-radius:10px;padding:13px;color:#75551b;font-size:13px;margin-top:14px}.footer{color:#8791a4;font-size:12px;padding:20px 0}@media(max-width:650px){.nav{float:none;margin-top:12px}.nav a{margin:0 12px 0 0}.wrap{padding:22px 14px}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="../shared/backend.js"></script></head><body>
+<header class="top"><div class="brand">My<span>Digi</span> · MyControl</div><nav class="nav"><a href="../">Home</a><a href="../mydigi/">Customer Portal</a></nav></header>
+<main class="wrap">
+<section class="hero"><span class="tag">PORTAL 2 · OWNER ADMIN · TRIAL</span><h1>MyControl</h1><p class="muted">Central owner view for MyDigi customer accounts and submitted service requests.</p></section>
+<section class="card" id="loginCard"><h2>Owner sign in</h2><p class="muted">Sign in with the account that has been securely assigned the owner role in Supabase.</p><label>Email</label><input id="email" type="email" autocomplete="username" placeholder="Owner email"><label>Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Password"><button id="signin">Sign in to MyControl</button><div id="loginMessage" class="status" role="status" aria-live="polite">Owner access is restricted. Customer accounts cannot open this dashboard.</div></section>
+<section id="dashboard" class="hidden">
+<div class="grid"><div class="metric"><strong id="requestCount">0</strong><span>Total service requests</span></div><div class="metric"><strong id="customerCount">0</strong><span>Customer profiles</span></div><div class="metric"><strong id="newCount">0</strong><span>New / submitted requests</span></div><div class="metric"><strong id="serviceCount">4</strong><span>Trial service categories</span></div></div>
+<section class="card"><h2>Customer service requests</h2><p class="muted">Live records from Supabase. Refresh to fetch the latest submissions.</p><button id="refresh">Refresh records</button><button id="export" class="secondary">Export Excel-compatible CSV</button><div id="dataMessage" class="status">Loading records…</div><div class="tablewrap"><table><thead><tr><th>Date</th><th>Request ID</th><th>Customer</th><th>Phone</th><th>Service</th><th>Request title</th><th>Status</th><th>Requirement details</th></tr></thead><tbody id="requestRows"><tr><td colspan="8">No records loaded.</td></tr></tbody></table></div></section>
+<section class="card"><h2>Customer accounts</h2><p class="muted">Customer profiles stored in the shared database.</p><div class="tablewrap"><table><thead><tr><th>Customer name</th><th>Phone</th><th>Account type</th><th>Registered</th></tr></thead><tbody id="customerRows"><tr><td colspan="4">No records loaded.</td></tr></tbody></table></div></section>
+<div class="note"><strong>Trial limitations:</strong> This dashboard currently provides live customer/request viewing and CSV export. It does not yet process WhatsApp OTP, payment gateway transactions, service-plan approvals, or automated commissions. CSV opens in Excel; direct Google Sheets sync is a later integration.</div>
+<button id="signout" class="secondary">Sign out</button>
+</section>
+<div class="footer">MyDigi Application · MyControl Owner Portal · Supabase Auth + Row Level Security</div>
+</main>
+<script>
+(()=> {
+ const client=window.myDigiSupabase, $=id=>document.getElementById(id);
+ let requestData=[], profileData=[];
+ const serviceNames={digital_marketing:"My Digital Marketing",e_catalogue:"E-Catalogue",my_payment:"My Payment",teacher:"Teacher"};
+ const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ const say=(id,msg)=>$(id).textContent=msg;
+ if(!client){say("loginMessage","Supabase connection did not load. Refresh and try again.");return;}
+ function csvCell(v){let s=String(v??"");if(/^[=+@-]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
+ function exportCsv(){
+   const header=["record_type","request_id","customer_id","customer_name","phone","service","title","status","created_at","requirements_json"];
+   const rows=requestData.map(r=>[ "service_request",r.id,r.customer_id,r.requirements?.full_name||"",r.requirements?.phone||"",serviceNames[r.service_key]||r.service_key,r.title,r.status,r.created_at,JSON.stringify(r.requirements||{}) ]);
+   profileData.forEach(p=>rows.push(["customer_profile","","",p.full_name||"",p.phone||"","", "",p.account_type||"",p.created_at,""]));
+   const csv="\uFEFF"+[header,...rows].map(row=>row.map(csvCell).join(",")).join("\r\n");
+   const blob=new Blob([csv],{type:"text/csv;charset=utf-8;"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+   a.href=url;a.download="mydigi-trial-data-"+new Date().toISOString().slice(0,10)+".csv";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+ }
+ function render(){
+   $("requestCount").textContent=requestData.length;
+   $("customerCount").textContent=profileData.length;
+   $("newCount").textContent=requestData.filter(r=>r.status==="submitted").length;
+   $("requestRows").innerHTML=requestData.length?requestData.map(r=>{
+     const req=r.requirements||{};
+     return "<tr><td>"+esc(new Date(r.created_at).toLocaleString())+"</td><td>"+esc(r.id)+"</td><td>"+esc(req.full_name||"—")+"</td><td>"+esc(req.phone||"—")+"</td><td>"+esc(serviceNames[r.service_key]||r.service_key)+"</td><td>"+esc(r.title)+"</td><td><span class='pill'>"+esc(r.status)+"</span></td><td>"+esc(req.details||"")+"</td></tr>";
+   }).join(""):"<tr><td colspan='8'>No customer requests yet.</td></tr>";
+   $("customerRows").innerHTML=profileData.length?profileData.map(p=>"<tr><td>"+esc(p.full_name||"—")+"</td><td>"+esc(p.phone||"—")+"</td><td>"+esc(p.account_type)+"</td><td>"+esc(new Date(p.created_at).toLocaleString())+"</td></tr>").join(""):"<tr><td colspan='4'>No customer profiles yet.</td></tr>";
+ }
+ async function loadData(){
+   say("dataMessage","Loading customer records from Supabase…");
+   const {data:reqs,error:reqError}=await client.from("md_requests").select("*").order("created_at",{ascending:false});
+   if(reqError){say("dataMessage","Could not load requests: "+reqError.message);return;}
+   requestData=reqs||[];
+   const {data:profiles,error:profileError}=await client.from("md_profiles").select("id,full_name,phone,account_type,created_at").eq("account_type","customer").order("created_at",{ascending:false});
+   if(profileError){say("dataMessage","Requests loaded, but customer profiles could not load: "+profileError.message);profileData=[];}
+   else profileData=profiles||[];
+   render();say("dataMessage","Loaded "+requestData.length+" service request(s) and "+profileData.length+" customer profile(s) from Supabase.");
+ }
+ async function verifyOwner(user){
+   const {data:profile,error}=await client.from("md_profiles").select("account_type").eq("id",user.id).maybeSingle();
+   if(error){say("loginMessage","Could not verify account role: "+error.message);return false;}
+   if(profile?.account_type!=="owner"){say("loginMessage","Access denied. This account is not assigned the owner role. No customer data has been opened. Ask for secure owner-account setup in Supabase.");return false;}
+   $("loginCard").classList.add("hidden");$("dashboard").classList.remove("hidden");await loadData();return true;
+ }
+ $("signin").addEventListener("click",async()=>{
+   const email=$("email").value.trim(),password=$("password").value;
+   if(!email||!password){say("loginMessage","Enter owner email and password.");return;}
+   $("signin").disabled=true;say("loginMessage","Checking owner account…");
+   const {data,error}=await client.auth.signInWithPassword({email,password});
+   $("signin").disabled=false;
+   if(error){say("loginMessage",error.message);return;}
+   const allowed=await verifyOwner(data.user);
+   if(!allowed){await client.auth.signOut();}
+ });
+ $("refresh").addEventListener("click",loadData);
+ $("export").addEventListener("click",exportCsv);
+ $("signout").addEventListener("click",async()=>{await client.auth.signOut();$("dashboard").classList.add("hidden");$("loginCard").classList.remove("hidden");say("loginMessage","Signed out.");});
+ client.auth.getSession().then(async({data})=>{if(data.session?.user){const allowed=await verifyOwner(data.session.user);if(!allowed)await client.auth.signOut();}});
+})();
+</script></body></html>
