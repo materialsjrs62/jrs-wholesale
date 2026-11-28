@@ -1,68 +1,67 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MyDigi Welcome</title>
-<meta name="description" content="MyDigi Welcome — share your name and WhatsApp number for personal confirmation.">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MyDigi Welcome | Services & Access</title>
+<meta name="description" content="Explore MyDigi services and access your customer or channel partner portal.">
 <style>
-:root{--navy:#101b35;--navy2:#1b2d50;--gold:#d8b56d;--ink:#1d2940;--muted:#68758b;--paper:#f5f6f9;--line:#e5e8ef}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 Arial,Helvetica,sans-serif}
-header{background:var(--navy);color:#fff;padding:17px 5%;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.brand{font-size:23px;font-weight:800;letter-spacing:.2px}.brand .gold{color:var(--gold)}.headnote{font-size:12px;color:#dce2ed}
-main{max-width:1040px;margin:auto;padding:22px 18px 46px}
-.security{background:#fff8e9;border:1px solid #ead8ae;border-left:5px solid var(--gold);border-radius:12px;padding:15px 18px;margin-bottom:18px}
-.security strong{display:block;margin-bottom:3px;color:#493a1e}.security p{margin:0;color:#5f553f;font-size:14px}
-.hero{background:linear-gradient(125deg,var(--navy),var(--navy2));color:white;border-radius:20px;padding:clamp(28px,6vw,56px);position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;width:270px;height:270px;border:1px solid rgba(216,181,109,.25);border-radius:50%;right:-85px;top:-110px;box-shadow:0 0 0 28px rgba(216,181,109,.04),0 0 0 58px rgba(216,181,109,.03)}
-.eyebrow{color:var(--gold);font-size:11px;letter-spacing:2px;font-weight:800}
-h1{font-size:clamp(34px,6vw,52px);line-height:1.1;max-width:650px;margin:12px 0 14px;letter-spacing:-1px}
-.hero p{color:#dce3ef;max-width:620px;font-size:16px;margin:0}.goldline{height:3px;width:58px;background:var(--gold);margin:23px 0 0}
-.section-title{margin:30px 0 14px;font-size:22px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.step,.panel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:20px}
-.stepno{display:inline-flex;width:34px;height:34px;border-radius:50%;align-items:center;justify-content:center;background:#f5eddd;color:#785b25;font-weight:800;margin-bottom:9px}
-.step h3{margin:0 0 5px;font-size:16px}.step p{margin:0;color:var(--muted);font-size:13px}
-.panel{margin-top:20px;padding:clamp(22px,4vw,32px)}.panel h2{margin:0 0 7px;font-size:23px}.muted{color:var(--muted);margin:0}
-.formbox{margin-top:17px;background:#f8f9fb;border:1px dashed #cfd5df;border-radius:12px;padding:19px}
-.formbox strong{display:block;margin-bottom:4px}
-.btn{display:inline-block;border:0;border-radius:9px;padding:13px 19px;background:var(--gold);color:#1b2435;text-decoration:none;font-weight:700;margin-top:13px}
-.btn:hover{filter:brightness(.96)}
-.trust{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}.trust span{font-size:12px;color:#56647a;background:#f0f2f6;border-radius:30px;padding:7px 11px}
-footer{padding:23px 0 0;color:#8992a2;font-size:12px;text-align:center}
-@media(max-width:700px){header{align-items:flex-start;flex-direction:column}.steps{grid-template-columns:1fr}main{padding:15px 13px 34px}.hero{border-radius:15px}}
+:root{--navy:#101b35;--navy2:#1c3155;--gold:#d9b66d;--ink:#18243a;--muted:#69758a;--paper:#f5f6f9;--line:#e5e9f0}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 Arial,Helvetica,sans-serif}
+header{background:var(--navy);color:white;padding:15px max(5%,calc((100% - 1160px)/2));display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.brand{font-size:24px;font-weight:800;letter-spacing:.2px}.brand span{color:var(--gold)}.top-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:9px;padding:11px 16px;font-weight:700;font-size:13px;border:1px solid transparent}
+.btn-gold{background:var(--gold);color:#17223a}.btn-outline{border-color:#73819a;color:#fff}.btn-dark{background:var(--navy);color:white}.btn-light{background:#f1e8d5;color:#6b4e1c}
+main{max-width:1160px;margin:auto;padding:22px 18px 50px}
+.hero{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:22px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;overflow:hidden;min-height:300px}
+.eyebrow{color:var(--gold);font-size:11px;letter-spacing:2px;font-weight:800}.hero h1{font-size:clamp(34px,5vw,54px);line-height:1.08;letter-spacing:-1px;margin:12px 0}.hero p{color:#d9e0ec;max-width:570px;margin:0 0 20px}.hero-art{height:245px;border:1px solid rgba(217,182,109,.35);border-radius:17px;background:rgba(255,255,255,.06);overflow:hidden;display:flex;align-items:center;justify-content:center}.hero-art img{width:100%;height:100%;object-fit:cover}.hero-placeholder{color:#e3d1a7;text-align:center;padding:20px;font-size:18px;font-weight:700}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:30px 0 15px}.section-head h2{margin:0;font-size:25px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.service{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 5px 18px rgba(20,34,60,.04);display:flex;flex-direction:column}.service-img{height:165px;background:linear-gradient(135deg,#172847,#34496b);display:flex;align-items:center;justify-content:center;color:#e4d2a8;font-weight:700;font-size:18px;overflow:hidden}.service-img img{width:100%;height:100%;object-fit:cover}.service-body{padding:17px;display:flex;flex-direction:column;flex:1}.service h3{margin:0 0 7px;font-size:17px;line-height:1.3}.service p{margin:0;color:var(--muted);font-size:13px;flex:1}.service .btn{margin-top:14px;align-self:flex-start}
+.customer-entry{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.customer-entry h2{margin:0 0 4px;font-size:20px}.customer-entry p{margin:0;color:var(--muted);font-size:13px}
+.security{margin-top:17px;background:#fff8e9;border:1px solid #ead8ae;border-left:4px solid var(--gold);border-radius:11px;padding:13px 16px;color:#625338;font-size:13px}.security strong{display:block;color:#493a1e;margin-bottom:2px}
+footer{text-align:center;color:#8a93a3;font-size:12px;padding:26px 0 0}
+@media(max-width:760px){header{padding:14px 16px}.hero{grid-template-columns:1fr}.hero-art{height:190px}.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.services{grid-template-columns:1fr}.service-img{height:190px}.top-actions{width:100%}.top-actions .btn{flex:1}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="../shared/backend.js"></script>
 </head>
 <body>
-<header><div class="brand">My<span class="gold">Digi</span> Welcome</div><div class="headnote">Personal confirmation · Simple onboarding</div></header>
+<header><div class="brand">My<span>Digi</span> Welcome</div><nav class="top-actions" aria-label="Portal access"><a class="btn btn-outline" href="../">Customer Login</a><a class="btn btn-gold" href="../mypartner/">Channel Partner Login</a></nav></header>
 <main>
-<div class="security" role="note" aria-label="Security note">
-<strong>To avoid bot and spam entries and maintain security</strong>
-<p>Please enter your genuine name and active WhatsApp number. We will use these details only to contact you for confirmation. Thank you for your cooperation.</p>
-</div>
-<section class="hero">
-<div class="eyebrow">WELCOME TO MYDIGI</div>
-<h1>Your need.<br>Our organised support.</h1>
-<p>Share your basic details with us. Our team will personally confirm your request on WhatsApp. Once confirmed, we will share the appropriate MyDigi access details.</p>
-<div class="goldline"></div>
+<section class="hero"><div><div class="eyebrow">WELCOME TO MYDIGI</div><h1 id="heroTitle">Digital services. Business growth. One connected platform.</h1><p id="heroText">Explore practical digital services and business support. Choose a service below or enter your dedicated portal.</p><a class="btn btn-gold" href="#services">Explore Our Services</a></div><div class="hero-art" id="heroArt"><div class="hero-placeholder">MYDIGI<br>Digital Services & Business Support</div></div></section>
+<div class="section-head" id="services"><div><h2>Our Services</h2><p>Choose the support that matches your requirement.</p></div></div>
+<section class="services" id="serviceGrid" aria-label="MyDigi services">
+<article class="service"><div class="service-img">My Digital Marketing</div><div class="service-body"><h3>My Digital Marketing</h3><p>Digital visibility and marketing support for your business.</p><a class="btn btn-dark" href="#customer-entry">Explore Service</a></div></article>
+<article class="service"><div class="service-img">E Catalogue</div><div class="service-body"><h3>E Catalogue</h3><p>Present your products and services in a clear digital catalogue.</p><a class="btn btn-dark" href="#customer-entry">Explore Service</a></div></article>
+<article class="service"><div class="service-img">My Payment</div><div class="service-body"><h3>My Payment – Through CEG ERP system</h3><p>Organised payment collection and tracking through the CEG ERP system.</p><a class="btn btn-dark" href="#customer-entry">Explore Service</a></div></article>
+<article class="service"><div class="service-img">Business Management</div><div class="service-body"><h3>Business Management – By CEG ERP system</h3><p>Support for day-to-day business operations using the CEG ERP system.</p><a class="btn btn-dark" href="#customer-entry">Explore Service</a></div></article>
+<article class="service"><div class="service-img">Teacher</div><div class="service-body"><h3>Teacher</h3><p>Connect with organised online teaching and skill sessions.</p><a class="btn btn-dark" href="#customer-entry">Explore Service</a></div></article>
 </section>
-<h2 class="section-title">How it works</h2>
-<section class="steps" aria-label="Welcome process">
-<article class="step"><div class="stepno">01</div><h3>Share your details</h3><p>Submit your name and 10-digit WhatsApp number through the form.</p></article>
-<article class="step"><div class="stepno">02</div><h3>Personal confirmation</h3><p>We will contact you on WhatsApp and manually verify your request. No OTP is used.</p></article>
-<article class="step"><div class="stepno">03</div><h3>Access shared</h3><p>After confirmation, we will share the relevant MyDigi access link with you.</p></article>
-</section>
-<section class="panel">
-<h2>Start with MyDigi Welcome</h2>
-<p class="muted">Please complete the short form. Your response will be recorded in our connected Google Sheet for manual review.</p>
-<div class="formbox">
-<strong>Customer details form</strong>
-<p class="muted">Only your name and WhatsApp number are required. There is no OTP or email verification at this stage.</p>
-<a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeuY9CtgTKfNv-R5yyciVy7fS47cWvzMQ1RqeF2TnqsD8w6kQ/viewform" target="_blank" rel="noopener">Open customer details form</a>
-</div>
-<div class="trust"><span>✓ Manual WhatsApp confirmation</span><span>✓ Google Sheet record</span><span>✓ Access after approval</span></div>
-</section>
-<footer>MyDigi Welcome · Customer onboarding</footer>
+<section class="customer-entry" id="customer-entry"><div><h2>Already have MyDigi access?</h2><p>Customers and channel partners can use their separate login portals above.</p></div><div class="top-actions"><a class="btn btn-dark" href="../">Customer Login</a><a class="btn btn-light" href="../mypartner/">Channel Partner Login</a></div></section>
+<div class="security"><strong>To avoid bot and spam entries and maintain security</strong>Please use the official login portals and provide genuine details when requested. Customer enquiries are handled through personal confirmation.</div>
+<footer>MyDigi Welcome · Digital services and business support</footer>
 </main>
-</body>
-</html>
+<script>
+(function(){
+ const db=window.myDigiSupabase;if(!db)return;
+ const defaults={hero_title:'Digital services. Business growth. One connected platform.',hero_text:'Explore practical digital services and business support. Choose a service below or enter your dedicated portal.',hero_image:'',services:[
+ {title:'My Digital Marketing',description:'Digital visibility and marketing support for your business.',image:'',link:'#customer-entry'},
+ {title:'E Catalogue',description:'Present your products and services in a clear digital catalogue.',image:'',link:'#customer-entry'},
+ {title:'My Payment – Through CEG ERP system',description:'Organised payment collection and tracking through the CEG ERP system.',image:'',link:'#customer-entry'},
+ {title:'Business Management – By CEG ERP system',description:'Support for day-to-day business operations using the CEG ERP system.',image:'',link:'#customer-entry'},
+ {title:'Teacher',description:'Connect with organised online teaching and skill sessions.',image:'',link:'#customer-entry'}
+ ]};
+ const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ function render(c){
+  document.getElementById('heroTitle').textContent=c.hero_title||defaults.hero_title;
+  document.getElementById('heroText').textContent=c.hero_text||defaults.hero_text;
+  if(c.hero_image)document.getElementById('heroArt').innerHTML='<img alt="MyDigi welcome banner" src="'+esc(c.hero_image)+'">';
+  const list=Array.isArray(c.services)?c.services:defaults.services;
+  document.getElementById('serviceGrid').innerHTML=defaults.services.map((d,i)=>{
+   const s={...d,...(list[i]||{})};
+   return '<article class="service"><div class="service-img">'+(s.image?'<img loading="lazy" alt="'+esc(s.title)+'" src="'+esc(s.image)+'">':esc(s.title))+'</div><div class="service-body"><h3>'+esc(s.title)+'</h3><p>'+esc(s.description)+'</p><a class="btn btn-dark" href="'+esc(s.link||'#customer-entry')+'">Explore Service</a></div></article>';
+  }).join('');
+ }
+ db.from('md_site_content').select('content').eq('id','welcome').maybeSingle().then(({data})=>{if(data&&data.content)render({...defaults,...data.content});});
+})();
+</script>
+</body></html>
