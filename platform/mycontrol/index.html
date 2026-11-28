@@ -8,7 +8,32 @@
 <main class="wrap">
 <section class="hero"><span class="tag">PRIVATE · OWNER ADMIN</span><h1>MyDigi Admin</h1><p class="muted">One private control point for customer records, channel partner records and MyDigi service activity.</p></section>
 <section class="card" id="loginCard"><h2>Owner sign in</h2><p class="muted">Sign in with the account that has been securely assigned the owner role in Supabase.</p><label>Email</label><input id="email" type="email" autocomplete="username" placeholder="Owner email"><label>Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Password"><button id="signin">Sign in to MyControl</button><div id="loginMessage" class="status" role="status" aria-live="polite">Owner access is restricted. Customer accounts cannot open this dashboard.</div></section>
-<section id="dashboard" class="hidden"><section class="card"><h2>Google Sheet Entries</h2><p class="muted">Customer and channel partner records are organised as separate sections in the same Google Sheet.</p><div class="grid"><div class="metric"><strong>Customer Entries</strong><span>Existing MyDigi Welcome form responses</span><p><a href="https://docs.google.com/spreadsheets/d/1bz1GAxktXu4MYQ2enu4uHyeTjyFXNBHEw2FcbD6LHiY/edit?usp=drivesdk" target="_blank" rel="noopener">Open customer entries in Google Sheets ↗</a></p></div><div class="metric"><strong>Channel Partner Entries</strong><span>Separate section planned in the same sheet</span><p>Will be connected when the partner entry process is finalised. No new form or sheet tab has been created.</p></div></div><div class="note">Google Sheet records open in your Google account. This dashboard does not copy or expose private sheet data inside the website yet.</div></section>
+<section id="dashboard" class="hidden">
+<section class="card" id="visualEditor">
+<h2>MyDigi Website Design</h2>
+<p class="muted">Change the main website appearance here. Your customer and welcome pages stay separate.</p>
+<div class="grid">
+<div><label>Website name</label><input id="designBrand"></div>
+<div><label>Tagline</label><input id="designTagline"></div>
+</div>
+<label>Main heading</label><input id="designHeroTitle">
+<label>First message</label><input id="designHeroText1">
+<label>Second message</label><input id="designHeroText2">
+<label>Third message</label><input id="designHeroText3">
+<label>Hero image (upload from phone)</label><input id="designImage" type="file" accept="image/png,image/jpeg,image/webp">
+<div id="designImageStatus" class="muted">Optional. JPG, PNG or WebP, maximum 5 MB.</div>
+<label>Website layout</label>
+<select id="designColumns"><option value="2">Two-column cards</option><option value="1">Single-column cards</option></select>
+<div class="grid">
+<label><input id="designHideInfluencer" type="checkbox" style="width:auto"> Hide Influencer section</label>
+<label><input id="designHideNewsletter" type="checkbox" style="width:auto"> Hide Newsletter section</label>
+</div>
+<button id="designPreview" class="secondary">Preview changes</button>
+<button id="designSave">Save website changes</button>
+<div id="designMessage" class="status">Load your saved website design after owner sign-in.</div>
+</section>
+
+<section class="card"><h2>Google Sheet Entries</h2><p class="muted">Customer and channel partner records are organised as separate sections in the same Google Sheet.</p><div class="grid"><div class="metric"><strong>Customer Entries</strong><span>Existing MyDigi Welcome form responses</span><p><a href="https://docs.google.com/spreadsheets/d/1bz1GAxktXu4MYQ2enu4uHyeTjyFXNBHEw2FcbD6LHiY/edit?usp=drivesdk" target="_blank" rel="noopener">Open customer entries in Google Sheets ↗</a></p></div><div class="metric"><strong>Channel Partner Entries</strong><span>Separate section planned in the same sheet</span><p>Will be connected when the partner entry process is finalised. No new form or sheet tab has been created.</p></div></div><div class="note">Google Sheet records open in your Google account. This dashboard does not copy or expose private sheet data inside the website yet.</div></section>
 <div class="grid"><div class="metric"><strong id="requestCount">0</strong><span>Total service requests</span></div><div class="metric"><strong id="customerCount">0</strong><span>Customer profiles</span></div><div class="metric"><strong id="newCount">0</strong><span>New / submitted requests</span></div><div class="metric"><strong id="serviceCount">4</strong><span>Trial service categories</span></div></div>
 <section class="card"><h2>Customer service requests</h2><p class="muted">Live records from Supabase. Refresh to fetch the latest submissions.</p><button id="refresh">Refresh records</button><button id="export" class="secondary">Export Excel-compatible CSV</button><div id="dataMessage" class="status">Loading records…</div><div class="tablewrap"><table><thead><tr><th>Date</th><th>Request ID</th><th>Customer</th><th>Phone</th><th>Service</th><th>Request title</th><th>Status</th><th>Requirement details</th></tr></thead><tbody id="requestRows"><tr><td colspan="8">No records loaded.</td></tr></tbody></table></div></section>
 <section class="card"><h2>Customer accounts</h2><p class="muted">Customer profiles stored in the shared database.</p><div class="tablewrap"><table><thead><tr><th>Customer name</th><th>Phone</th><th>Account type</th><th>Registered</th></tr></thead><tbody id="customerRows"><tr><td colspan="4">No records loaded.</td></tr></tbody></table></div></section>
@@ -54,11 +79,54 @@
    else profileData=profiles||[];
    render();say("dataMessage","Loaded "+requestData.length+" service request(s) and "+profileData.length+" customer profile(s) from Supabase.");
  }
+
+ const designDefaults={brand:'MyDigi',tagline:'Digital Growth Made Simple',hero_title:'You Have An Audience. Now Build A Business With It.',hero_text1:'Turn your influence into an entrepreneurial opportunity with MyDigi.',hero_text2:"Your audience already knows you. Combine their trust and reach with MyDigi's digital services, technology and business support.",hero_text3:'You bring the audience. MyDigi powers the business.',hero_image:'',hide_influencer:false,hide_newsletter:false,card_columns:2};
+ let designData={...designDefaults};
+ function readDesignForm(){
+  return {brand:$('designBrand').value.trim(),tagline:$('designTagline').value.trim(),hero_title:$('designHeroTitle').value.trim(),hero_text1:$('designHeroText1').value.trim(),hero_text2:$('designHeroText2').value.trim(),hero_text3:$('designHeroText3').value.trim(),hero_image:designData.hero_image||'',hide_influencer:$('designHideInfluencer').checked,hide_newsletter:$('designHideNewsletter').checked,card_columns:Number($('designColumns').value)||2};
+ }
+ function fillDesignForm(c){
+  $('designBrand').value=c.brand||'';$('designTagline').value=c.tagline||'';$('designHeroTitle').value=c.hero_title||'';
+  $('designHeroText1').value=c.hero_text1||'';$('designHeroText2').value=c.hero_text2||'';$('designHeroText3').value=c.hero_text3||'';
+  $('designHideInfluencer').checked=!!c.hide_influencer;$('designHideNewsletter').checked=!!c.hide_newsletter;$('designColumns').value=String(c.card_columns||2);
+ }
+ async function loadDesign(){
+  const {data,error}=await client.from('md_site_content').select('content').eq('id','main').maybeSingle();
+  if(error){say('designMessage','Could not load saved design: '+error.message);return}
+  designData={...designDefaults,...(data?.content||{})};fillDesignForm(designData);
+  say('designMessage',data?'Saved website design loaded.':'No saved design yet. Default website design is shown.');
+ }
+ function previewDesign(){
+  const c=readDesignForm();const escHtml=v=>String(v||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  $('designMessage').innerHTML='<strong>Preview:</strong><div style="padding:16px;background:#102947;color:white;border-radius:10px;margin-top:8px"><div style="font-size:24px;font-weight:800">'+escHtml(c.brand)+'</div><div style="color:#e6d5ad">'+escHtml(c.tagline)+'</div></div><div style="padding:16px;background:#f7f8fa;border-radius:10px;margin-top:8px"><h2>'+escHtml(c.hero_title)+'</h2><p>'+escHtml(c.hero_text1)+'</p><p>'+escHtml(c.hero_text2)+'</p><p>'+escHtml(c.hero_text3)+'</p>'+(c.hero_image?'<img src="'+escHtml(c.hero_image)+'" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px">':'')+'</div><p class="muted">Layout: '+(c.card_columns===1?'Single column':'Two columns')+' · Influencer: '+(c.hide_influencer?'Hidden':'Visible')+' · Newsletter: '+(c.hide_newsletter?'Hidden':'Visible')+'</p>';
+ }
+ $('designPreview').addEventListener('click',previewDesign);
+ $('designImage').addEventListener('change',async()=>{
+  const file=$('designImage').files[0];if(!file)return;
+  if(file.size>5*1024*1024){say('designImageStatus','Image is over 5 MB. Choose a smaller image.');$('designImage').value='';return}
+  const ext=(file.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'');
+  const path='main/'+Date.now()+'.'+ext;
+  say('designImageStatus','Uploading image…');
+  const {error}=await client.storage.from('mydigi-site-assets').upload(path,file,{upsert:true,contentType:file.type});
+  if(error){say('designImageStatus','Upload failed: '+error.message);return}
+  const {data}=client.storage.from('mydigi-site-assets').getPublicUrl(path);
+  designData.hero_image=data.publicUrl;say('designImageStatus','Image uploaded and ready to save.');
+ });
+ $('designSave').addEventListener('click',async()=>{
+  const c=readDesignForm();$('designSave').disabled=true;say('designMessage','Saving website design…');
+  const {data:userData}=await client.auth.getUser();
+  const payload={id:'main',content:c,updated_by:userData.user.id,updated_at:new Date().toISOString()};
+  const {error}=await client.from('md_site_content').upsert(payload,{onConflict:'id'});
+  $('designSave').disabled=false;
+  if(error){say('designMessage','Save failed: '+error.message);return}
+  designData=c;say('designMessage','Saved. Open the MyDigi main website and refresh to see your changes.');
+ });
+
  async function verifyOwner(user){
    const {data:profile,error}=await client.from("md_profiles").select("account_type").eq("id",user.id).maybeSingle();
    if(error){say("loginMessage","Could not verify account role: "+error.message);return false;}
    if(profile?.account_type!=="owner"){say("loginMessage","Access denied. This account is not assigned the owner role. No customer data has been opened. Ask for secure owner-account setup in Supabase.");return false;}
-   $("loginCard").classList.add("hidden");$("dashboard").classList.remove("hidden");await loadData();return true;
+   $("loginCard").classList.add("hidden");$("dashboard").classList.remove("hidden");await loadData();await loadDesign();return true;
  }
  $("signin").addEventListener("click",async()=>{
    const email=$("email").value.trim(),password=$("password").value;
