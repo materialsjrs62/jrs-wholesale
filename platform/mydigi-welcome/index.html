@@ -138,6 +138,40 @@ footer{color:var(--muted);font-size:12px;line-height:1.5}
   .hero-art{height:clamp(255px,78vw,350px)}
 }
 .contact-security-note{display:block;margin-top:7px;color:#d5dcea;background:transparent;padding:0;font-size:11px;line-height:1.4}
+/* Distinct, coordinated backgrounds for the three main content sections */
+#services,#models,#credibility{
+  padding:clamp(20px,3vw,30px);
+  border-radius:18px;
+  border:1px solid rgba(16,27,53,.08);
+  box-shadow:0 5px 18px rgba(16,27,53,.045);
+}
+#services{background:#fff4d8}
+#models{background:#eaf3fc}
+#credibility{background:#f1f3f7}
+#services .head h2,#models .head h2,#credibility .head h2{
+  color:#101b35;
+  font-weight:800;
+  text-shadow:none;
+}
+#services .head p,#models .head p,#credibility .head p{
+  color:#34445b;
+}
+#services .card,#models .model,#credibility .stat{
+  background:#fff;
+  border:1px solid rgba(16,27,53,.12);
+  box-shadow:0 3px 12px rgba(16,27,53,.06);
+}
+#services .service-body h3,#models .model h3{
+  color:#101b35;
+}
+#services .service-body p,#models .model p{
+  color:#34445b;
+}
+#credibility .stat strong{color:#101b35}
+#credibility .stat span{color:#34445b}
+@media(max-width:520px){
+  #services,#models,#credibility{padding:16px;border-radius:14px}
+}
 </style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="../shared/backend.js"></script></head>
 <body><header><div class="brand"><div class="brand-main"><span style="color:#fff">Mydigi</span> <span>|</span> <span><em>digital growth made simple</em></span></div><div class="brand-byline">By Tapas · Founder, <a href="https://remotepmc.github.io/confident-closer-pwa/index.html?refresh=20&amp;utm_source=chatgpt.com" target="_blank" rel="noopener">Confident Closer</a></div><div class="brand-tagline">We help you grow your business digitally online with ERP automation.</div><div style="margin-top:7px;font-size:14px;font-weight:800"><a href="https://wa.me/917894531187" target="_blank" rel="noopener" style="color:#f0cf86;text-decoration:underline;text-underline-offset:3px">WhatsApp 7894531187 · talk&chat for help</a></div></div><nav><a class="navlink" href="#services">Services</a><a class="navlink" href="#models">Business Models</a><a class="navlink" href="#contact">Contact</a><a class="btn btn-outline" href="https://docs.google.com/forms/d/e/1FAIpQLSeuY9CtgTKfNv-R5yyciVy7fS47cWvzMQ1RqeF2TnqsD8w6kQ/viewform" target="_blank" rel="noopener">Log in / Register</a></nav></header>
 <main>
