@@ -256,6 +256,24 @@ document.getElementById('buildServices').innerHTML=[quick,professional].map(mdSe
 document.getElementById('seekhoServices').innerHTML=mdServiceCard(seekho);
 }
 
+
+async function loadVisualDesign(){
+ if(!db)return;
+ const {data}=await db.from('md_site_content').select('content').eq('id','main').maybeSingle();
+ if(!data||!data.content)return;
+ const c=data.content;
+ const setText=(sel,val)=>{const el=document.querySelector(sel);if(el&&typeof val==='string'&&val)el.textContent=val};
+ setText('.brand',c.brand);setText('.tag',c.tagline);
+ setText('.hero h1',c.hero_title);
+ const ps=document.querySelectorAll('.hero p');
+ [c.hero_text1,c.hero_text2,c.hero_text3].forEach((v,i)=>{if(ps[i]&&typeof v==='string')ps[i].textContent=v});
+ const hero=document.querySelector('.hero');
+ if(hero&&c.hero_image){hero.style.backgroundImage='linear-gradient(90deg,rgba(255,255,255,.94),rgba(255,255,255,.78)),url("'+String(c.hero_image).replace(/["\\\\]/g,'')+'")';hero.style.backgroundSize='cover';hero.style.backgroundPosition='center';hero.style.borderRadius='16px';hero.style.padding='38px 24px'}
+ const inf=document.getElementById('influencer');if(inf&&c.hide_influencer)inf.style.display='none';
+ const news=document.getElementById('newsletter');if(news&&c.hide_newsletter)news.style.display='none';
+ const cards=document.querySelector('.cards');if(cards&&c.card_columns)cards.style.gridTemplateColumns='repeat('+Math.max(1,Math.min(2,Number(c.card_columns)))+',minmax(0,1fr))';
+}
+
 async function loadNewsletter(){
 const box=document.getElementById('newsletterList');
 if(!db){box.innerHTML='<p class="news-empty">Newsletter is temporarily unavailable. Please check again soon.</p>';return}
@@ -271,6 +289,7 @@ return '<article class="news-item"><div class="news-date">'+esc(n.edition_date)+
 }
 loadNewsletter();
 loadMyDigiControls();
+loadVisualDesign();
 if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(err=>console.warn("MyDigi offline support could not be enabled. Check your connection and browser site permissions.",err)))}
 </script>
 </body>
