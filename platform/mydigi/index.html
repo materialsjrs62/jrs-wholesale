@@ -7,9 +7,9 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../shared/backend.js"></script>
 </head><body>
-<header class="top"><div class="brand">My<span>Digi</span> Application</div><nav class="nav"><a href="../">Home</a><a href="../mydigi/">MyDigi</a><a href="../mypartner/">MyPartner</a><a href="../mycontrol/">MyControl</a></nav></header>
+<header class="top"><div class="brand">My<span>Digi</span> Application</div><nav class="nav"><a href="../">Home</a><a href="./">MyDigi</a><a href="../mycontrol/">MyControl</a></nav></header>
 <main class="wrap">
-<section class="hero"><div class="tag">CUSTOMER PORTAL · CONNECTED BACKEND</div><h1>Bring your business needs.<br>We will organise the solution.</h1><p>Sign in or create an account, then submit your service requirement. Your request is stored securely in the MyDigi database.</p></section>
+<section class="hero"><div class="tag">CUSTOMER PORTAL · TWO-PORTAL TRIAL</div><h1>Bring your business needs.<br>We will organise the solution.</h1><p>Sign in or create an account, then submit your service requirement. Your request is stored securely in the MyDigi database.</p></section>
 <section class="grid">
 <article class="card" id="authCard"><h2>Customer account</h2><p class="muted">Use your email address to create an account or sign in.</p>
 <label>Email</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com">
@@ -28,7 +28,7 @@
 <label>Tell us what you need</label><textarea id="details" rows="4" required maxlength="3000" placeholder="Describe your requirement. Do not include passwords or sensitive financial information."></textarea>
 <button type="submit" id="submitRequest">Submit service request</button>
 </form><div id="requestMessage" class="status" role="status" aria-live="polite">Your request will be sent to MyDigi securely after submission.</div></section>
-<div class="note">Trial safety: only enter test information until we finish testing partner and owner access. This portal currently saves service requests; partner assignment, file uploads, plan approval and payment verification are still being connected.</div>
+<div class="note">Trial mode: customer requests are submitted directly into the shared MyDigi database for owner review in MyControl. MyPartner is not active in this trial. WhatsApp OTP, file uploads, plan approval and payment verification are later implementation steps.</div>
 <div class="footer">MyDigi Application · Customer Portal · Supabase Auth + Database</div>
 </main>
 <script>
